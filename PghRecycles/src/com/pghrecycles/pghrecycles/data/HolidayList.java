@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.text.format.Time;
+import android.util.Log;
 
 public class HolidayList {
-	
 	private List<Holiday> mHolidayList;
 	
 	public HolidayList() {
@@ -20,25 +20,24 @@ public class HolidayList {
 	}
 	
 	/**
-	 * returns the list of holidays which fall during the week that date is in 
+	 * determines if there is a holiday preceding the supplied date 
 	 * @param date
 	 * @return
 	 */
-	public List<Holiday> getHolidaysInWeek(Time date) {
-		List<Holiday> holidaysInWeek = new ArrayList<Holiday>();
-		
-		//TODO: logic here
-		
-		return holidaysInWeek;
-	}
-	
-	/**
-	 * returns true if the week that date falls in, contains a holiday
-	 * @param date
-	 * @return
-	 */
-	public boolean isWeekContainingHoliday(Time date) {
-		//TODO: logic here
+	public boolean isHolidayInWeekBefore(Time date) {
+		for (Holiday holiday : mHolidayList) {
+			Time holidayDate = holiday.getDate();
+			Log.e("PghRecycles", "holiday: " + holidayDate.format3339(true) + " before? " + holidayDate.before(date));
+			if (holidayDate.before(date)) {
+				float distance = (holidayDate.toMillis(true) - date.toMillis(true)) / (1000 * 60 * 60 * 24.0f);
+				if (distance > 0 && distance < 6) {
+					if (holidayDate.weekDay < date.weekDay) {
+						// this bumps the date
+						return true;
+					}					
+				}
+			}
+		}
 		return false;
 	}
 }

@@ -31,11 +31,13 @@ public class MockDivisionInfoProvider implements DivisionInfoProvider {
 		case EASTERN:
 			// YardDebrisSchedule:
 			pickupDateTime = new Time();
-			pickupDateTime.set(18, 5, 2013);
+			pickupDateTime.set(18, 5-1, 2013);
+			pickupDateTime.normalize(true);
 			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
 			
 			pickupDateTime = new Time();
-			pickupDateTime.set(9, 11, 2013);
+			pickupDateTime.set(9, 11-1, 2013);
+			pickupDateTime.normalize(true);
 			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
 			
 			// RecyclingSchedule
@@ -45,11 +47,13 @@ public class MockDivisionInfoProvider implements DivisionInfoProvider {
 		case SOUTHERN:
 			// YardDebrisSchedule:
 			pickupDateTime = new Time();
-			pickupDateTime.set(18, 5, 2013);
+			pickupDateTime.set(18, 5-1, 2013);
+			pickupDateTime.normalize(true);
 			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
 			
 			pickupDateTime = new Time();
-			pickupDateTime.set(9, 11, 2013);
+			pickupDateTime.set(9, 11-1, 2013);
+			pickupDateTime.normalize(true);
 			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
 			
 			// RecyclingSchedule

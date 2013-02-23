@@ -15,31 +15,31 @@ public class MockHolidayListProvider implements HolidayListProvider {
 //		switch (year.year) {
 //		case 2013:
 			tempDateTime = new Time();
-			tempDateTime.set(1, 1, 2013);
+			tempDateTime.set(1, 1-1, 2013);
 			holidayList.add(new Holiday("New Year's Day", tempDateTime));
 
 			tempDateTime = new Time();
-			tempDateTime.set(21, 1, 2013);
+			tempDateTime.set(21, 1-1, 2013);
 			holidayList.add(new Holiday("Rev. Dr. Martin Luther King, Jr. Day", tempDateTime));
 
 			tempDateTime = new Time();
-			tempDateTime.set(27, 5, 2013);
+			tempDateTime.set(27, 5-1, 2013);
 			holidayList.add(new Holiday("Memorial Day", tempDateTime));
 			
 			tempDateTime = new Time();
-			tempDateTime.set(4, 7, 2013);
+			tempDateTime.set(4, 7-1, 2013);
 			holidayList.add(new Holiday("Independence Day", tempDateTime));
 
 			tempDateTime = new Time();
-			tempDateTime.set(2, 9, 2013);
+			tempDateTime.set(2, 9-1, 2013);
 			holidayList.add(new Holiday("Labor Day", tempDateTime));
 			
 			tempDateTime = new Time();
-			tempDateTime.set(28, 11, 2013);
+			tempDateTime.set(28, 11-1, 2013);
 			holidayList.add(new Holiday("Thanksgiving", tempDateTime));
 			
 			tempDateTime = new Time();
-			tempDateTime.set(25, 12, 2013);
+			tempDateTime.set(25, 12-1, 2013);
 			holidayList.add(new Holiday("Christmas", tempDateTime));
 
 			//break;
