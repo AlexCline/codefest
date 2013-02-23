@@ -1,4 +1,10 @@
 PghrecyclesCom::Application.routes.draw do
+  resources :hoods
+
+
+  resources :achieves
+
+
   resources :users
 
 
