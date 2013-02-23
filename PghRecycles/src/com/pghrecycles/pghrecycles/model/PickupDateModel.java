@@ -20,7 +20,6 @@ public class PickupDateModel {
 	private DivisionInfoProvider mDivisionInfoProvider;
 	private HolidayListProvider mHolidayListProvider;
 	
-	
 	public PickupDateModel(PickupInfoProvider pickupInfoProvider, DivisionInfoProvider divisionInfoProvider, HolidayListProvider holidayListProvider) {
 		mPickupInfoProvider = pickupInfoProvider;
 		mDivisionInfoProvider = divisionInfoProvider;
@@ -46,7 +45,7 @@ public class PickupDateModel {
 	 */
 	public PickupDate getNextRefusePickupDate(PickupInfo pickupInfo, HolidayList holidayList, Time currentDate) {
 		PickupDate nextPickupDate = null;
-		Time pickup = new Time(currentDate);	
+		Time nextDate = new Time(currentDate);	
 		
 		// today
 		int distanceDays = 0;
@@ -54,25 +53,23 @@ public class PickupDateModel {
 		if (currentDate.weekDay < pickupInfo.getDay()) {
 			// upcoming
 			distanceDays = (pickupInfo.getDay()-currentDate.weekDay);
-			Log.e("PghRecycles", "upcoming: current date weekday: " + currentDate.weekDay + " pickupInfoDay: " + pickupInfo.getDay() + " distance Days: " + distanceDays);
 			
 		} else if (currentDate.weekDay > pickupInfo.getDay()) {
 			// next weekday
 			distanceDays = ((DAYS_IN_WEEK-currentDate.weekDay) + pickupInfo.getDay()) % (DAYS_IN_WEEK);
-			
-			Log.e("PghRecycles", "next week: current date weekday: " + currentDate.weekDay + " pickupInfoDay: " + pickupInfo.getDay() + " distance Days: " + distanceDays);
 		}
 
-		pickup.set(pickup.toMillis(true) + (distanceDays * MS_IN_DAY));			
-		
-		Log.e("PghRecycles", "holidayInWeek? " + holidayList.isHolidayInWeekBefore(pickup));			
-		
+		nextDate.set(nextDate.toMillis(true) + (distanceDays * MS_IN_DAY));			
+				
 		// bump to next day (not business day), if holiday immediately precedes the day
-		if (holidayList.isHolidayInWeekBefore(pickup)) {
-			pickup.set(pickup.toMillis(true) + MS_IN_DAY);
+		if (holidayList.isHolidayInWeekOnOrBefore(nextDate)) {
+			nextDate.set(nextDate.toMillis(true) + MS_IN_DAY);
 		}
 		
-		nextPickupDate = new PickupDate(pickup);
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next refuse date: " + nextDate.format3339(true) + " holiday bump? " + holidayList.isHolidayInWeekOnOrBefore(nextDate));
+
+		
+		nextPickupDate = new PickupDate(nextDate);
 		return nextPickupDate;
 	}
 	
@@ -97,14 +94,17 @@ public class PickupDateModel {
 	 * @return
 	 */
 	public PickupDate getNextYardDebrisPickupDate(DivisionInfo divisionInfo, Time currentDate) {
-		PickupDate earliestDate = null;
+		PickupDate nextDate = null;
 		for (PickupDate pd : divisionInfo.getYardDebrisSchedule().getPickupDates()) {
-			if (currentDate.before(pd.getDate())) {
-				if (earliestDate == null || pd.getDate().before(earliestDate.getDate())) {
-					earliestDate = pd;
+			Time pickupDate = pd.getDate();
+			if (currentDate.before(pickupDate) || (currentDate.year == pickupDate.year && currentDate.month == pickupDate.month && currentDate.monthDay == pickupDate.monthDay)) {
+				if (nextDate == null || 
+						(pickupDate.before(nextDate.getDate())								 
+								)) {
+					nextDate = pd;
 				}
 			}
 		}
-		return earliestDate;
+		return nextDate;
 	}
 }
