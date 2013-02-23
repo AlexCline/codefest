@@ -92,8 +92,8 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 //		String streetBase = locationInfo.getStreetBase();
 		
 //		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+" AND '"+DBASE_COL_YEAR+"' = "+yearQuery.year;
-//		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (('"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+") OR ('"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+")) AND '"+DBASE_COL_ZIP+"' = "+zipQuery+" AND '"+DBASE_COL_STREET+"' = "+streetQuery;
-		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (('"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+") OR ('"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+"))";
+		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (("+DBASE_COL_LEFT_LOW+" <= "+addressNumQuery+" AND "+DBASE_COL_LEFT_HIGH+" >= "+addressNumQuery+") OR ("+DBASE_COL_RIGHT_LOW+" <= "+addressNumQuery+" AND "+DBASE_COL_RIGHT_HIGH+" >= "+addressNumQuery+")) AND "+DBASE_COL_ZIP+" = "+zipQuery+" AND "+DBASE_COL_STREET+" = "+streetQuery;
+//		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (('"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+") OR ('"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+"))";
 //		String selectStr = "SELECT * FROM "+DATABASE_TABLE;
 		Cursor results = db.rawQuery(selectStr, null);
 		
@@ -103,6 +103,10 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 		// for now, use 1st result, get relevant fields
 		try {
 			results.moveToFirst();
+			int numResults = results.getCount();
+			if (numResults > 1) {
+				// more than 1 res. 
+			}
 			int leftLow = results.getInt(results
 					.getColumnIndex(DBASE_COL_LEFT_LOW));
 			int leftHigh = results.getInt(results
