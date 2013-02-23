@@ -202,6 +202,12 @@ public class PghRecycles extends Activity {
 		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next pickup date: " + nextRefuseDate.getDate().format3339(true));
 		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next recyle date: " + nextRecycleDate.getDate().format3339(true));
 		
+		currentDate.set(31,11,2013);
+		currentDate.normalize(true);				
+		nextRecycleDate = pickupDateModel.getNextRecyclingPickupDate(pickupInfo, holidayList, divisionInfo, currentDate);
+		nextRefuseDate = pickupDateModel.getNextRefusePickupDate(pickupInfo, holidayList, currentDate);
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next pickup date: " + nextRefuseDate.getDate().format3339(true));
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next recyle date: " + nextRecycleDate.getDate().format3339(true));
 		
 	}
 
