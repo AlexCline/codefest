@@ -13,7 +13,7 @@ public class HolidayList {
 		mHolidayList = new ArrayList<Holiday>();
 	}
 	
-	public void addHoliday(Holiday holiday) {
+	public void add(Holiday holiday) {
 		if (!mHolidayList.contains(holiday)) {
 			mHolidayList.add(holiday);
 		}
