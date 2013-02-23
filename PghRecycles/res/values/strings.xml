@@ -9,5 +9,6 @@
     <string name="zip">zip</string>
     <string name="results">results</string>
     <string name="lookup">lookup</string>
+    <string name="day_int_result">dayID</string>
 
 </resources>

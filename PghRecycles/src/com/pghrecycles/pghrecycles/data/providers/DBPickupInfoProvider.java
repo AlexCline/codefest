@@ -66,19 +66,10 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
     
 	public DBPickupInfoProvider(Context context) {
 		DBPickupInfoProvider.context = context;
-//		dbOpener = new DatabaseOpener(context);
 		dbOpener = new DataBaseHelper(context);
-//		dbOpener.initializeDatabase();
 		db = dbOpener.getReadableDatabase();
-//		db = dbOpener.getWritableDatabase();
-		
 	}
 	
-//	public DBPickupInfoProvider open() throws SQLException {
-//        db = dbOpener.getWritableDatabase();
-//        return this;
-//    }
-//
     public void close() {
         dbOpener.close();
     }
@@ -88,24 +79,18 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 		
 		int addressNumQuery = locationInfo.getAddressNum();
 		int zipQuery = locationInfo.getZip();
-		String streetQuery = locationInfo.getStreet();
-//		String streetBase = locationInfo.getStreetBase();
+		String streetQuery = locationInfo.getStreet().toUpperCase();
+		String streetBaseQuery = locationInfo.getStreetBase().toUpperCase();
 		
-//		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+" AND '"+DBASE_COL_YEAR+"' = "+yearQuery.year;
-		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (("+DBASE_COL_LEFT_LOW+" <= "+addressNumQuery+" AND "+DBASE_COL_LEFT_HIGH+" >= "+addressNumQuery+") OR ("+DBASE_COL_RIGHT_LOW+" <= "+addressNumQuery+" AND "+DBASE_COL_RIGHT_HIGH+" >= "+addressNumQuery+")) AND "+DBASE_COL_ZIP+" = "+zipQuery+" AND "+DBASE_COL_STREET+" = "+streetQuery;
-//		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (('"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+") OR ('"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+"))";
-//		String selectStr = "SELECT * FROM "+DATABASE_TABLE;
+		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE (("+DBASE_COL_LEFT_LOW+" <= "+addressNumQuery+" AND "+DBASE_COL_LEFT_HIGH+" >= "+addressNumQuery+") OR ("+DBASE_COL_RIGHT_LOW+" <= "+addressNumQuery+" AND "+DBASE_COL_RIGHT_HIGH+" >= "+addressNumQuery+")) AND "+DBASE_COL_ZIP+" = "+zipQuery+" AND ("+DBASE_COL_STREET+" = '"+streetQuery+"' OR "+DBASE_COL_STREET_BASE+" = '"+streetBaseQuery+"')";
 		Cursor results = db.rawQuery(selectStr, null);
-		
-		// TODO if we have multiple results, choose the row for which oddness or evenness matches the left_low or right_low
-		// TODO proper try / catch handling (for missing results)
 		
 		// for now, use 1st result, get relevant fields
 		try {
 			results.moveToFirst();
 			int numResults = results.getCount();
 			if (numResults > 1) {
-				// more than 1 res. 
+				// TODO more than 1 result; use heuristics to pick most appropriate result? 
 			}
 			int leftLow = results.getInt(results
 					.getColumnIndex(DBASE_COL_LEFT_LOW));
@@ -141,17 +126,40 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 			String hood = results.getString(results
 					.getColumnIndex(DBASE_COL_HOOD));
 			int year = results.getInt(results.getColumnIndex(DBASE_COL_YEAR));
-			int day = results.getInt(results.getColumnIndex(DBASE_COL_DAY));
+			String dayStr = results.getString(results.getColumnIndex(DBASE_COL_DAY));
+			int day = -1;
+			if (dayStr.equalsIgnoreCase("sunday")) {
+				day = Time.SUNDAY;
+			} else if (dayStr.equalsIgnoreCase("monday") || dayStr.equalsIgnoreCase("mon")) {
+				day = Time.MONDAY; 
+			} else if (dayStr.equalsIgnoreCase("tuesday") || dayStr.equalsIgnoreCase("tue")) {
+				day = Time.TUESDAY;
+			} else if (dayStr.equalsIgnoreCase("wedesday") || dayStr.equalsIgnoreCase("wed")) {
+				day = Time.WEDNESDAY;
+			} else if (dayStr.equalsIgnoreCase("thursday") || dayStr.equalsIgnoreCase("thu")) {
+				day = Time.THURSDAY;
+			} else if (dayStr.equalsIgnoreCase("friday") || dayStr.equalsIgnoreCase("fri")) {
+				day =  Time.FRIDAY;
+			} else if (dayStr.equalsIgnoreCase("saturday")) {
+				day =  Time.SATURDAY;
+			} else {
+				// invalid day?
+				assert false : "invalid day: "+dayStr;
+				Log.e(this.getClass().getName(), "invalid day: "+dayStr);
+			}
 
 			PickupInfo pickupInfo = new PickupInfo(leftLow, leftHigh, rightLow,
 					rightHigh, zip, hood, division, streetBase, street, year,
 					day);
 			return pickupInfo;
 		} catch (CursorIndexOutOfBoundsException e) {
-			// no results returned
+			// no results returned; return empty PickupInfo object
+			Log.e(this.getClass().getName(), "no results for LocationInfo: "+locationInfo.toString());
 			PickupInfo pickupInfo = new PickupInfo();
 			return pickupInfo;
 		}
+		
+		
 	}
 	
 	
