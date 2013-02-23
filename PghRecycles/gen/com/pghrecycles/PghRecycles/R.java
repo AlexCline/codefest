@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.pghrecycles.PghRecycles;
+package com.pghrecycles.pghrecycles;
 
 public final class R {
     public static final class attr {

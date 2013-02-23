@@ -1,7 +1,8 @@
-package com.pghrecycles.PghRecycles;
+package com.pghrecycles.pghrecycles;
 
-import android.os.Bundle;
+
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
 public class PghRecycles extends Activity {
