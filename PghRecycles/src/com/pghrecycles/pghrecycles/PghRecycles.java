@@ -38,9 +38,19 @@ public class PghRecycles extends Activity {
             public void onClick(View v) {
                 // do lookup
             	// build LocationInfo object
-            	int zip = Integer.parseInt(((EditText)findViewById(R.id.editTextZip)).getText().toString());
+            	int zip = -1;
+            	try {
+            		zip = Integer.parseInt(((EditText)findViewById(R.id.editTextZip)).getText().toString());
+            	} catch (NumberFormatException e) {
+            		// input not a number
+            	}
             	String street = ((EditText)findViewById(R.id.editTextStreet)).getText().toString();
-            	int address = Integer.parseInt(((EditText)findViewById(R.id.editTextAddress)).getText().toString());
+            	int address = -1;
+            	try {
+            		address = Integer.parseInt(((EditText)findViewById(R.id.editTextAddress)).getText().toString());
+            	} catch (NumberFormatException e) {
+            		// input not a number
+            	}
             	LocationInfo locationInfo = new LocationInfo(address, street, "", zip);
             	Time now = new Time();
             	now.setToNow();
