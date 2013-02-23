@@ -67,19 +67,31 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 //    }
 	
 	@Override
-	public PickupInfo getPickupInfo(LocationInfo locationInfo, Time year) {
+	public PickupInfo getPickupInfo(LocationInfo locationInfo, Time yearQuery) {
 		
-		int addressNum = locationInfo.getAddressNum();
-		int zip = locationInfo.getZip();
-		String street = locationInfo.getStreet();
+		int addressNumQuery = locationInfo.getAddressNum();
+		int zipQuery = locationInfo.getZip();
+		String streetQuery = locationInfo.getStreet();
 //		String streetBase = locationInfo.getStreetBase();
 		
-		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNum+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNum+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNum+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNum;
-		Cursor cursor = db.rawQuery(selectStr, null);
+		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+" AND '"+DBASE_COL_YEAR+"' = "+yearQuery.year;
+		Cursor results = db.rawQuery(selectStr, null);
 		
+		// TODO if we have multiple results, choose the row for which oddness or evenness matches the left_low or right_low
+		// TODO proper try / catch handling (for missing results)
 		
-		// if we have multiple results, choose the row for which oddness or evenness matches the left_low or right_low
-		
+		// for now, use 1st result, get relevant fields
+		results.moveToFirst();
+		int leftLow = results.getInt(results.getColumnIndex(DBASE_COL_LEFT_LOW));
+		int leftHigh = results.getInt(results.getColumnIndex(DBASE_COL_LEFT_HIGH));
+		int rightLow = results.getInt(results.getColumnIndex(DBASE_COL_RIGHT_LOW));
+		int rightHigh = results.getInt(results.getColumnIndex(DBASE_COL_RIGHT_HIGH));
+		int zip = results.getInt(results.getColumnIndex(DBASE_COL_ZIP));
+		String division = results.getString(results.getColumnIndex(DBASE_COL_DIVISION));
+		String streetBase = results.getString(results.getColumnIndex(DBASE_COL_STREET_BASE));
+		String street = results.getString(results.getColumnIndex(DBASE_COL_STREET));
+		int year = results.getInt(results.getColumnIndex(DBASE_COL_YEAR));
+		int day = results.getInt(results.getColumnIndex(DBASE_COL_DAY));
 		
 		
 		
