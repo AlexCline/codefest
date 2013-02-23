@@ -104,6 +104,7 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 				+ DBASE_COL_ZIP + " = " + zipQuery + " AND ("
 				+ DBASE_COL_STREET + " = '" + streetQuery + "' OR "
 				+ DBASE_COL_STREET_BASE + " = '" + streetBaseQuery + "')";
+		Log.v(this.getClass().getName(), "query: "+selectStr);
 		Cursor results = db.rawQuery(selectStr, null);
 
 		// for now, use 1st result, get relevant fields
