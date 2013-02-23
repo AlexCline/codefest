@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:ems="10" >
+        android:ems="10"
+        android:inputType="number" >
 
         <requestFocus />
     </EditText>
@@ -39,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
-        android:ems="10" />
+        android:ems="10"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textView5"
@@ -55,7 +57,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
         android:layout_below="@+id/textView5"
-        android:ems="10" />
+        android:ems="10"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/buttonDoLookup"
