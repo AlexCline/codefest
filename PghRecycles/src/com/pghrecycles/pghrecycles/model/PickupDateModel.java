@@ -1,7 +1,6 @@
 package com.pghrecycles.pghrecycles.model;
 
 import android.text.format.Time;
-import android.util.Log;
 
 import com.pghrecycles.pghrecycles.data.DivisionInfo;
 import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
@@ -66,9 +65,6 @@ public class PickupDateModel {
 			nextDate.set(nextDate.toMillis(true) + MS_IN_DAY);
 		}
 		
-		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next refuse date: " + nextDate.format3339(true) + " holiday bump? " + holidayList.isHolidayInWeekOnOrBefore(nextDate));
-
-		
 		nextPickupDate = new PickupDate(nextDate);
 		return nextPickupDate;
 	}
@@ -81,8 +77,18 @@ public class PickupDateModel {
 	 * @param date
 	 * @return
 	 */
-	public PickupDate getNextRecyclingPickupDate(PickupInfo pickupInfo, HolidayList holidayList, DivisionInfo divisionInfo, Time currentDate) {
-		return null;
+	public PickupDate getNextRecyclingPickupDate(PickupInfo pickupInfo, HolidayList holidayList, DivisionInfo divisionInfo, Time currentDate) {		
+		PickupDate pickupDate = getNextRefusePickupDate(pickupInfo, holidayList, currentDate);				
+		if (divisionInfo.getRecyclingSchedule().isDateForRecycling(pickupDate.getDate())) {
+			return pickupDate;
+		} else {
+			// calculate date from next day, which will fall on next week.
+			// FIXME: a bit hacky? should this be in the recycling schedule logic?
+			Time nextDay = new Time();
+			nextDay.set(currentDate.toMillis(true) + DAYS_IN_WEEK * MS_IN_DAY);
+			nextDay.normalize(true);
+			return getNextRefusePickupDate(pickupInfo, holidayList, nextDay);
+		}		
 	}
 
 	/**

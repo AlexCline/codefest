@@ -1,11 +1,6 @@
 package com.pghrecycles.pghrecycles;
 
 
-import com.pghrecycles.pghrecycles.data.LocationInfo;
-import com.pghrecycles.pghrecycles.data.PickupInfo;
-import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
-import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -20,9 +15,11 @@ import com.pghrecycles.pghrecycles.data.HolidayList;
 import com.pghrecycles.pghrecycles.data.LocationInfo;
 import com.pghrecycles.pghrecycles.data.PickupDate;
 import com.pghrecycles.pghrecycles.data.PickupInfo;
+import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockPickupInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
 import com.pghrecycles.pghrecycles.model.PickupDateModel;
 
 public class PghRecycles extends Activity {
@@ -189,6 +186,23 @@ public class PghRecycles extends Activity {
 		} else {
 			Log.e("PghRecycles", " no next date");
 		}
+		
+		
+		currentDate.setToNow();
+		currentDate.normalize(true);
+		PickupDate nextRecycleDate = pickupDateModel.getNextRecyclingPickupDate(pickupInfo, holidayList, divisionInfo, currentDate);
+		nextRefuseDate = pickupDateModel.getNextRefusePickupDate(pickupInfo, holidayList, currentDate);
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next pickup date: " + nextRefuseDate.getDate().format3339(true));
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next recyle date: " + nextRecycleDate.getDate().format3339(true));
+		
+		currentDate.set(1,0,2013);
+		currentDate.normalize(true);				
+		nextRecycleDate = pickupDateModel.getNextRecyclingPickupDate(pickupInfo, holidayList, divisionInfo, currentDate);
+		nextRefuseDate = pickupDateModel.getNextRefusePickupDate(pickupInfo, holidayList, currentDate);
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next pickup date: " + nextRefuseDate.getDate().format3339(true));
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next recyle date: " + nextRecycleDate.getDate().format3339(true));
+		
+		
 	}
 
 	@Override

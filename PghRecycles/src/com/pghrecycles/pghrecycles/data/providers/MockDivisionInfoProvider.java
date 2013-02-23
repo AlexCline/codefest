@@ -59,7 +59,7 @@ public class MockDivisionInfoProvider implements DivisionInfoProvider {
 			break;
 		}		
 		
-		divisionInfo.setYardDebrisSchedule(yardDebrisSchedule);		
+		divisionInfo.setRecyclingSchedule(recyclingSchedule);		
 		return divisionInfo;
 	}
 }

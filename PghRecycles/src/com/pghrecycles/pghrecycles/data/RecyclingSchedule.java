@@ -1,6 +1,7 @@
 package com.pghrecycles.pghrecycles.data;
 
 import android.text.format.Time;
+import android.util.Log;
 
 public class RecyclingSchedule {
 	private int startWeek;
@@ -19,6 +20,8 @@ public class RecyclingSchedule {
 	 * @return
 	 */
 	public boolean isDateForRecycling(Time date) {
-		return false;
+		int weekNumber = date.getWeekNumber();
+		Log.e("PghRecycles", "weeknumber: " + weekNumber + " startWeek: " + startWeek);
+		return (weekNumber % 2) == (startWeek % 2);
 	}
 }
