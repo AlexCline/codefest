@@ -55,7 +55,14 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	@Override
 	public PickupInfo getPickupInfo(LocationInfo locationInfo, Time year) {
 		
+		// 
 		
+		// select * from db where street = locationInfo.getStreet(), (leftLow <= locationInfo.getStreet#?() && leftHigh >= locationInfo.getStreet#?()) || ( or for right )
+		
+		// WHERE streetAddr
+		// BETWEEN 'leftLow' AND 'leftHigh'
+		// OR
+		// BETWEEN 'rightLow' AND 'rightHigh'
 		
 		
 		
