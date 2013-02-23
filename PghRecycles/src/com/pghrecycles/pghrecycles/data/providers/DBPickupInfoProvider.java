@@ -35,7 +35,7 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 //    public static final String KEY_NAME = "name";
 //    private static final String TAG = "";
 //    private static final String DATABASE_PATH = "data/data/com.pghrecycles.pghrecycles/databases/pickup.db";
-    private static final String DATABASE_PATH = "data/data/com.pghrecycles.pghrecycles/pickup.db";
+    private static final String DATABASE_PATH = "data/data/com.pghrecycles.pghrecycles/";
     private static final String DATABASE_NAME = "pickup.db";
 //	private static final String DATABASE_NAME = "pickup";
 //	private static final String DATABASE_NAME = "/sdcard/pickup.db";
@@ -218,7 +218,7 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	     * Check if the database already exist to avoid re-copying the file each time you open the application.
 	     * @return true if it exists, false if it doesn't
 	     */
-	    private boolean checkDataBase(){
+	    private boolean checkDataBase() {
 	 
 	    	SQLiteDatabase checkDB = null;
 	 
@@ -291,7 +291,11 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-	 
+			try {
+				createDataBase();
+			} catch (IOException e) {
+				Log.e(this.getClass().getName(), "could not create / copy database");
+			}
 		}
 	 
 		@Override
