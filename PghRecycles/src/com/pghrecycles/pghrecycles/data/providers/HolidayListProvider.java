@@ -4,7 +4,7 @@ import android.text.format.Time;
 
 import com.pghrecycles.pghrecycles.data.HolidayList;
 
-public interface HolidayInfoProvider {
+public interface HolidayListProvider {
 	/**
 	 * returns a HolidayList for the year specified in year
 	 * @param year

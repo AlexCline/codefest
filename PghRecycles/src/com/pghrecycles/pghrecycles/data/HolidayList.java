@@ -14,7 +14,9 @@ public class HolidayList {
 	}
 	
 	public void addHoliday(Holiday holiday) {
-		
+		if (!mHolidayList.contains(holiday)) {
+			mHolidayList.add(holiday);
+		}
 	}
 	
 	/**
@@ -22,8 +24,12 @@ public class HolidayList {
 	 * @param date
 	 * @return
 	 */
-	public List<Holiday> holidaysInWeek(Time date) {
-		return null;
+	public List<Holiday> getHolidaysInWeek(Time date) {
+		List<Holiday> holidaysInWeek = new ArrayList<Holiday>();
+		
+		//TODO: logic here
+		
+		return holidaysInWeek;
 	}
 	
 	/**
@@ -32,6 +38,7 @@ public class HolidayList {
 	 * @return
 	 */
 	public boolean isWeekContainingHoliday(Time date) {
+		//TODO: logic here
 		return false;
 	}
 }
