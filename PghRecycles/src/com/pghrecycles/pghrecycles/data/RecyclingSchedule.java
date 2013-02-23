@@ -1,5 +1,5 @@
 package com.pghrecycles.pghrecycles.data;
 
-public class RecyclingWeek {
+public class RecyclingSchedule {
 
 }
