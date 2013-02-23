@@ -54,7 +54,13 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	
 	@Override
 	public PickupInfo getPickupInfo(LocationInfo locationInfo, Time year) {
-		return null;
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	/**
