@@ -1,3 +1,4 @@
 !.gitignore
 PghRecycles/bin*
 PghRecycles/gen*
+PghRecycles/.settings/
