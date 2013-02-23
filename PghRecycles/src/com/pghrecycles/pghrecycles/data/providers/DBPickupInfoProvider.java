@@ -1,9 +1,11 @@
 package com.pghrecycles.pghrecycles.data.providers;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.text.format.Time;
 import android.util.Log;
 
@@ -27,6 +29,18 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
     private static final String DATABASE_TABLE = "project";
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_CREATE = "";
+    // cols
+    private static final String DBASE_COL_STREET = "street";
+    private static final String DBASE_COL_LEFT_LOW = "left_low";
+    private static final String DBASE_COL_LEFT_HIGH = "left_high";
+    private static final String DBASE_COL_RIGHT_LOW = "right_low";
+    private static final String DBASE_COL_RIGHT_HIGH = "right_high";
+    private static final String DBASE_COL_HOOD = "hood";
+    private static final String DBASE_COL_ZIP = "zip";
+    private static final String DBASE_COL_DIVISION = "division";
+    private static final String DBASE_COL_STREET_BASE = "street_name_base";
+    private static final String DBASE_COL_YEAR = "year";
+    private static final String DBASE_COL_DAY = "day";
 //        "create table project (codProject integer primary key autoincrement, "
 //        + "name text);";
 	
@@ -55,15 +69,16 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	@Override
 	public PickupInfo getPickupInfo(LocationInfo locationInfo, Time year) {
 		
-		// 
+		int addressNum = locationInfo.getAddressNum();
+		int zip = locationInfo.getZip();
+		String street = locationInfo.getStreet();
+//		String streetBase = locationInfo.getStreetBase();
 		
-		// select * from db where street = locationInfo.getStreet(), (leftLow <= locationInfo.getStreet#?() && leftHigh >= locationInfo.getStreet#?()) || ( or for right )
+		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNum+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNum+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNum+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNum;
+		Cursor cursor = db.rawQuery(selectStr, null);
 		
-		// WHERE streetAddr
-		// BETWEEN 'leftLow' AND 'leftHigh'
-		// OR
-		// BETWEEN 'rightLow' AND 'rightHigh'
 		
+		// if we have multiple results, choose the row for which oddness or evenness matches the left_low or right_low
 		
 		
 		
