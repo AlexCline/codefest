@@ -15,6 +15,23 @@ public class PickupInfo {
 	private String street;
 	private int year;
 	private int day; // using Time.DAY consts
+	
+	public PickupInfo(int leftLow, int leftHigh, int rightLow, int rightHigh,
+			int zip, String hood, Division division, String streetBase,
+			String street, int year, int day) {
+		super();
+		this.leftLow = leftLow;
+		this.leftHigh = leftHigh;
+		this.rightLow = rightLow;
+		this.rightHigh = rightHigh;
+		this.zip = zip;
+		this.hood = hood;
+		this.division = division;
+		this.streetBase = streetBase;
+		this.street = street;
+		this.year = year;
+		this.day = day;
+	}
 	public int getLeftLow() {
 		return leftLow;
 	}

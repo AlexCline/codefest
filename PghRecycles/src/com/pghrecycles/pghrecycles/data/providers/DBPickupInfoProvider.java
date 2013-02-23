@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteStatement;
 import android.text.format.Time;
 import android.util.Log;
 
+import com.pghrecycles.pghrecycles.data.DivisionInfo;
+import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
 import com.pghrecycles.pghrecycles.data.LocationInfo;
 import com.pghrecycles.pghrecycles.data.PickupInfo;
 
@@ -22,13 +24,13 @@ import com.pghrecycles.pghrecycles.data.PickupInfo;
 public class DBPickupInfoProvider implements PickupInfoProvider {
 	
 	// constants for interacting with the dbase
-	public static final String KEY_PROJECT = "project";
-    public static final String KEY_NAME = "name";
-    private static final String TAG = "DBCreation";
-    private static final String DATABASE_NAME = ".db";
-    private static final String DATABASE_TABLE = "project";
+//	public static final String KEY_PROJECT = "project";
+//    public static final String KEY_NAME = "name";
+//    private static final String TAG = "";
+    private static final String DATABASE_NAME = "pickup";
+    private static final String DATABASE_TABLE = "pickup";
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_CREATE = "";
+//    private static final String DATABASE_CREATE = "";
     // cols
     private static final String DBASE_COL_STREET = "street";
     private static final String DBASE_COL_LEFT_LOW = "left_low";
@@ -62,9 +64,9 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 //        return this;
 //    }
 //
-//    public void close() {
-//        dbOpener.close();
-//    }
+    public void close() {
+        dbOpener.close();
+    }
 	
 	@Override
 	public PickupInfo getPickupInfo(LocationInfo locationInfo, Time yearQuery) {
@@ -87,13 +89,28 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 		int rightLow = results.getInt(results.getColumnIndex(DBASE_COL_RIGHT_LOW));
 		int rightHigh = results.getInt(results.getColumnIndex(DBASE_COL_RIGHT_HIGH));
 		int zip = results.getInt(results.getColumnIndex(DBASE_COL_ZIP));
-		String division = results.getString(results.getColumnIndex(DBASE_COL_DIVISION));
+		String divisionStr = results.getString(results.getColumnIndex(DBASE_COL_DIVISION));
+		Division division = null;
+		if (divisionStr.equalsIgnoreCase(Division.CENTRAL.toString())) {
+			division = Division.CENTRAL;
+		} else if (divisionStr.equalsIgnoreCase(Division.SOUTHERN.toString())) {
+			division = Division.SOUTHERN;
+		} else if (divisionStr.equalsIgnoreCase(Division.EASTERN.toString())) {
+			division = Division.EASTERN;
+		} else if (divisionStr.equalsIgnoreCase(Division.NORTHERN.toString())) {
+			division = Division.NORTHERN;
+		} else {
+			// shouldn't happen, invalid division name
+			assert false;
+		}
 		String streetBase = results.getString(results.getColumnIndex(DBASE_COL_STREET_BASE));
 		String street = results.getString(results.getColumnIndex(DBASE_COL_STREET));
+		String hood = results.getString(results.getColumnIndex(DBASE_COL_HOOD));
 		int year = results.getInt(results.getColumnIndex(DBASE_COL_YEAR));
 		int day = results.getInt(results.getColumnIndex(DBASE_COL_DAY));
 		
-		
+		PickupInfo pickupInfo = new PickupInfo(leftLow, leftHigh, rightLow, rightHigh, zip, hood, division, streetBase, street, year, day);
+		return pickupInfo;
 		
 	}
 	
