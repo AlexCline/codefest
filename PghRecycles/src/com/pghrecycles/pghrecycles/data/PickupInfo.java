@@ -1,5 +1,7 @@
 package com.pghrecycles.pghrecycles.data;
 
+import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
+
 
 public class PickupInfo {
 	private int leftLow;
@@ -8,7 +10,7 @@ public class PickupInfo {
 	private int rightHigh;
 	private int zip;
 	private String hood;
-	private String division;
+	private Division division;
 	private String streetBase;
 	private String street;
 	private int year;
@@ -49,10 +51,10 @@ public class PickupInfo {
 	public void setHood(String hood) {
 		this.hood = hood;
 	}
-	public String getDivision() {
+	public Division getDivision() {
 		return division;
 	}
-	public void setDivision(String division) {
+	public void setDivision(Division division) {
 		this.division = division;
 	}
 	public String getStreetBase() {

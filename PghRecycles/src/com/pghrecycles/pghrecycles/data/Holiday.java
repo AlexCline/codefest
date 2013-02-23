@@ -24,5 +24,5 @@ public class Holiday {
 	}
 	public void setDate(Time date) {
 		this.date = date;
-	}
+	}	
 }
