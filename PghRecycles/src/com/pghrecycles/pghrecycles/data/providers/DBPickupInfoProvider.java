@@ -36,7 +36,7 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	// private static final String TAG = "";
 	// private static final String DATABASE_PATH =
 	// "data/data/com.pghrecycles.pghrecycles/databases/pickup.db";
-	private static final String DATABASE_PATH = "data/data/com.pghrecycles.pghrecycles/databases";
+	private static final String DATABASE_PATH = "data/data/com.pghrecycles.pghrecycles/databases/";
 	private static final String DATABASE_NAME = "pickup.db";
 	// private static final String DATABASE_NAME = "pickup";
 	// private static final String DATABASE_NAME = "/sdcard/pickup.db";
