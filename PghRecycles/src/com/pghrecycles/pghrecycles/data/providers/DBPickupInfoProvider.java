@@ -93,8 +93,7 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 		} catch (NumberFormatException e) {
 		}
 		String streetQuery = locationInfo.getStreet().toUpperCase().trim();
-		String streetBaseQuery = locationInfo.getStreetBase().toUpperCase()
-				.trim();
+		String streetBaseQuery = locationInfo.getStreet().toUpperCase().trim();
 
 		String selectStr = "SELECT * FROM " + DATABASE_TABLE + " WHERE (("
 				+ DBASE_COL_LEFT_LOW + " <= " + addressNumQuery + " AND "
