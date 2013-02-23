@@ -9,6 +9,10 @@ import android.text.format.Time;
  */
 public class PickupDate {
 	private Time date;
+	
+	public PickupDate(Time dateTime) {
+		this.date = dateTime;
+	}
 
 	public Time getDate() {
 		return date;

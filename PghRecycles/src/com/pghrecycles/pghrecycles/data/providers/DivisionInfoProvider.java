@@ -3,8 +3,8 @@ package com.pghrecycles.pghrecycles.data.providers;
 import android.text.format.Time;
 
 import com.pghrecycles.pghrecycles.data.DivisionInfo;
-import com.pghrecycles.pghrecycles.data.LocationInfo;
+import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
 
 public interface DivisionInfoProvider {
-	public DivisionInfo getDivisionInfo(LocationInfo locationInfo, Time year);
+	public DivisionInfo getDivisionInfo(Division division, Time year);
 }
