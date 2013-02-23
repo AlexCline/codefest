@@ -20,46 +20,46 @@ public class MockDivisionInfoProvider implements DivisionInfoProvider {
 		DivisionInfo divisionInfo = new DivisionInfo();
 		divisionInfo.setName(division.name());
 		divisionInfo.setDivision(division);
-		
-		YardDebrisSchedule yardDebrisSchedule = new YardDebrisSchedule();
-		RecyclingSchedule recyclingSchedule = new RecyclingSchedule();
 		Time pickupDateTime;
+		YardDebrisSchedule yardDebrisSchedule = new YardDebrisSchedule();
+		pickupDateTime = new Time();
+		pickupDateTime.set(18, 5-1, 2013);
+		pickupDateTime.normalize(true);
+		yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
+
+		pickupDateTime = new Time();
+		pickupDateTime.set(18, 5-1, 2014);
+		pickupDateTime.normalize(true);
+		yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
+					
+		
+		pickupDateTime = new Time();
+		pickupDateTime.set(9, 11-1, 2013);
+		pickupDateTime.normalize(true);
+		yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
+
+		pickupDateTime = new Time();
+		pickupDateTime.set(9, 11-1, 2014);
+		pickupDateTime.normalize(true);
+		yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
+		
+		divisionInfo.setYardDebrisSchedule(yardDebrisSchedule);
+		
+		RecyclingSchedule recyclingSchedule = new RecyclingSchedule();
 		
 		// construct values
 		switch (division) {
 		case CENTRAL:
 		case EASTERN:
-			// YardDebrisSchedule:
-			pickupDateTime = new Time();
-			pickupDateTime.set(18, 5, 2013);
-			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
-			
-			pickupDateTime = new Time();
-			pickupDateTime.set(9, 11, 2013);
-			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
-			
-			// RecyclingSchedule
 			recyclingSchedule.setStartWeek(1);			
 			break;
 		case NORTHERN:
 		case SOUTHERN:
-			// YardDebrisSchedule:
-			pickupDateTime = new Time();
-			pickupDateTime.set(18, 5, 2013);
-			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
-			
-			pickupDateTime = new Time();
-			pickupDateTime.set(9, 11, 2013);
-			yardDebrisSchedule.addPickupDate(new PickupDate(pickupDateTime));
-			
-			// RecyclingSchedule
 			recyclingSchedule.setStartWeek(2);			
 			break;
-		}
+		}		
 		
-		divisionInfo.setYardDebrisSchedule(yardDebrisSchedule);
-		divisionInfo.setYardDebrisSchedule(yardDebrisSchedule);
-		
+		divisionInfo.setYardDebrisSchedule(yardDebrisSchedule);		
 		return divisionInfo;
 	}
 }
