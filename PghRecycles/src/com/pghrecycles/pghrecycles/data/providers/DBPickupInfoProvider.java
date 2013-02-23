@@ -99,9 +99,13 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 				+ DBASE_COL_LEFT_LOW + " <= " + addressNumQuery + " AND "
 				+ DBASE_COL_LEFT_HIGH + " >= " + addressNumQuery + ") OR ("
 				+ DBASE_COL_RIGHT_LOW + " <= " + addressNumQuery + " AND "
-				+ DBASE_COL_RIGHT_HIGH + " >= " + addressNumQuery + ")) AND "
+				+ DBASE_COL_RIGHT_HIGH + " >= " + addressNumQuery + ") OR ("
+				+ DBASE_COL_LEFT_HIGH + " <= " + addressNumQuery + " AND "
+				+ DBASE_COL_LEFT_LOW + " >= " + addressNumQuery + ") OR ("
+				+ DBASE_COL_RIGHT_HIGH + " <= " + addressNumQuery + " AND "
+				+ DBASE_COL_RIGHT_LOW + " >= " + addressNumQuery + ")) AND "
 				+ DBASE_COL_ZIP + " = " + zipQuery + " AND ("
-				+ DBASE_COL_STREET + " = '" + streetQuery + "' OR "
+				+ DBASE_COL_STREET + " LIKE '" + streetQuery + "%' OR "
 				+ DBASE_COL_STREET_BASE + " = '" + streetBaseQuery + "')";
 		Log.v(this.getClass().getName(), "query: "+selectStr);
 		Cursor results = db.rawQuery(selectStr, null);
