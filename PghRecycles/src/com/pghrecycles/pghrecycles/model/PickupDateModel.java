@@ -66,8 +66,7 @@ public class PickupDateModel {
 			nextDate.set(nextDate.toMillis(true) + MS_IN_DAY);
 		}
 		
-		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next refuse date: " + nextDate.format3339(true) + " holiday bump? " + holidayList.isHolidayInWeekOnOrBefore(nextDate));
-
+		//Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next refuse date: " + nextDate.format3339(true) + " holiday bump? " + holidayList.isHolidayInWeekOnOrBefore(nextDate));
 		
 		nextPickupDate = new PickupDate(nextDate);
 		return nextPickupDate;
@@ -82,7 +81,13 @@ public class PickupDateModel {
 	 * @return
 	 */
 	public PickupDate getNextRecyclingPickupDate(PickupInfo pickupInfo, HolidayList holidayList, DivisionInfo divisionInfo, Time currentDate) {
-		return null;
+		
+		PickupDate pickupDate = getNextRefusePickupDate(pickupInfo, holidayList, currentDate);
+		
+		int weekNumber = pickupDate.getDate().getWeekNumber();
+		Log.e("PghRecycles", "week number: " + weekNumber);
+		
+		return pickupDate;
 	}
 
 	/**
