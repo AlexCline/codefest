@@ -6,6 +6,21 @@ public class LocationInfo {
 	private String streetBase;
 	private int zip;
 	
+	
+	public LocationInfo() {
+		this.addressNum = -1;
+		this.street = "";
+		this.streetBase = "";
+		this.zip = -1;
+	}
+	
+	public LocationInfo(int addressNum, String street, String streetBase,
+			int zip) {
+		this.addressNum = addressNum;
+		this.street = street;
+		this.streetBase = streetBase;
+		this.zip = zip;
+	}
 	public int getAddressNum() {
 		return addressNum;
 	}

@@ -4,5 +4,10 @@
     <string name="app_name">PghRecycles</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="address_num">addressNum</string>
+    <string name="street">street</string>
+    <string name="zip">zip</string>
+    <string name="results">results</string>
+    <string name="lookup">lookup</string>
 
 </resources>

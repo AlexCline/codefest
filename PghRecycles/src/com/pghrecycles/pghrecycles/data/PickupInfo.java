@@ -16,10 +16,12 @@ public class PickupInfo {
 	private int year;
 	private int day; // using Time.DAY consts
 	
+	public PickupInfo() {
+	}
+	
 	public PickupInfo(int leftLow, int leftHigh, int rightLow, int rightHigh,
 			int zip, String hood, Division division, String streetBase,
 			String street, int year, int day) {
-		super();
 		this.leftLow = leftLow;
 		this.leftHigh = leftHigh;
 		this.rightLow = rightLow;

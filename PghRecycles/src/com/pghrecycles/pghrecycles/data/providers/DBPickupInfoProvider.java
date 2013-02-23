@@ -27,7 +27,8 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 //	public static final String KEY_PROJECT = "project";
 //    public static final String KEY_NAME = "name";
 //    private static final String TAG = "";
-    private static final String DATABASE_NAME = "pickup";
+//    private static final String DATABASE_NAME = "assets/databases/pickup.db";
+    private static final String DATABASE_NAME = "pickup.db";
     private static final String DATABASE_TABLE = "pickup";
     private static final int DATABASE_VERSION = 1;
 //    private static final String DATABASE_CREATE = "";
@@ -76,7 +77,9 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 		String streetQuery = locationInfo.getStreet();
 //		String streetBase = locationInfo.getStreetBase();
 		
-		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+" AND '"+DBASE_COL_YEAR+"' = "+yearQuery.year;
+//		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE '"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+" OR '"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+" AND '"+DBASE_COL_YEAR+"' = "+yearQuery.year;
+		String selectStr = "SELECT * FROM "+DATABASE_TABLE+" WHERE ('"+DBASE_COL_LEFT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_LEFT_HIGH+"' >= "+addressNumQuery+") OR ('"+DBASE_COL_RIGHT_LOW+"' <= "+addressNumQuery+" AND '"+DBASE_COL_RIGHT_HIGH+"' >= "+addressNumQuery+")";
+//		String selectStr = "SELECT * FROM "+DATABASE_TABLE;
 		Cursor results = db.rawQuery(selectStr, null);
 		
 		// TODO if we have multiple results, choose the row for which oddness or evenness matches the left_low or right_low
@@ -116,8 +119,6 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	
 	/**
 	 * subclass of SQLiteOpenHelper, purpose is to provide access to back-end dbase
-	 * 
-	 * @author alexander.p.conrad@gmail.com
 	 *
 	 */
 	private static class DatabaseOpener extends SQLiteOpenHelper {
@@ -129,12 +130,14 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
         @Override
         public void onCreate(SQLiteDatabase db) {
         	// we shouldn't be calling this method; assert: database already exists!
+        	assert false;
 //            db.execSQL(DATABASE_CREATE);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         	// we shouldn't be calling this method; database should not be modifiable by application?
+        	assert false;
 //            Log.w(TAG, "Upgrading database from version " + oldVersion 
 //                    + " to "
 //                    + newVersion + ", which will destroy all old data");
@@ -148,5 +151,6 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 //        }
         
     } 
+	
 	
 }
