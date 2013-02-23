@@ -85,4 +85,33 @@
         android:layout_below="@+id/textView1"
         android:ems="10" />
 
+    <LinearLayout
+        android:layout_below="@+id/editTextResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextZip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/next_pickup_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="next_pickup_date" />
+
+        <TextView
+            android:id="@+id/next_recycle_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="next_recycle_date" />
+
+        <TextView
+            android:id="@+id/next_yard_debris_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="next_yard_debris_date" />
+    </LinearLayout>
+
 </RelativeLayout>
