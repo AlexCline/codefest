@@ -74,9 +74,14 @@ public class DBDivisionInfoProvider implements DivisionInfoProvider {
 			// record each date, store
 			int colDateIndex = resultsYardDebrisSched.getColumnIndex(DATABASE_COL_DATE); 
 			for (int r=0; r<numResults; r++) {
-				int date = resultsYardDebrisSched.getInt(colDateIndex);
+				int yardDebrisKey = resultsYardDebrisSched.getInt(colDateIndex);
+				String selectYardDebrisPickupDate = "SELECT * FROM "+DATABASE_TABLE_YARD_DEBRIS_PICKUP_DATE+" WHERE id = "+yardDebrisKey;
+				Cursor resultsYardDebrisPickupDate = db.rawQuery(selectYardDebrisPickupDate, null);
+				resultsYardDebrisPickupDate.moveToFirst();
+				int yardDebrisPickupEpoch = resultsYardDebrisPickupDate.getInt(resultsYardDebrisPickupDate.getColumnIndex(DATABASE_COL_DATE));
+				
 				Time dateTime = new Time();
-				dateTime.set(date*1000);
+				dateTime.set((long)yardDebrisPickupEpoch*(long)1000);
 				dateTime.normalize(true);
 				yardDebrisSchedule.addPickupDate(new PickupDate(dateTime));
 				

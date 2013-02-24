@@ -21,8 +21,10 @@ import com.pghrecycles.pghrecycles.data.LocationInfo;
 import com.pghrecycles.pghrecycles.data.PickupDate;
 import com.pghrecycles.pghrecycles.data.PickupInfo;
 import com.pghrecycles.pghrecycles.data.providers.DBDivisionInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.DBHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockPickupInfoProvider;
@@ -34,6 +36,8 @@ public class PghRecycles extends Activity {
 
 	PickupInfoProvider pickupInfoProvider;
 	DivisionInfoProvider divisionInfoProvider;
+	HolidayListProvider holidayListProvider;
+	
 	PickupDateModel mPickupDateModel;
 	
 	@Override
@@ -74,13 +78,16 @@ public class PghRecycles extends Activity {
             	Division division = pickupInfo.getDivision();
             	int year = pickupInfo.getYear();
             	Time time = new Time();
-            	time.set(0, 0, year);  // we only care about the year?
-            	DivisionInfo divisionInfo = divisionInfoProvider.getDivisionInfo(division, time);
+//            	time.set(0, 0, year);  // we only care about the year?
+            	time.setToNow();
+            	DivisionInfo divisionInfo = divisionInfoProvider.getDivisionInfo(division, now);
+            	
             	
             	Log.e("PghRecycles", "pickup info day: " + pickupDay + " division: " + pickupInfo.getDivision());
 
-            	HolidayList holidayList = mPickupDateModel.getHolidayList(now);
-        		DivisionInfo divisionInfo = mPickupDateModel.getDisivionInfo(pickupInfo.getDivision(), now);
+//            	HolidayList holidayList = mPickupDateModel.getHolidayList(now);
+            	HolidayList holidayList = holidayListProvider.getHolidayList(now);
+//        		DivisionInfo divisionInfo = mPickupDateModel.getDisivionInfo(pickupInfo.getDivision(), now);
             	
             	TextView nextPickupDateView = (TextView)findViewById(R.id.next_pickup_date);
             	final Time nextRefusePickupDate = mPickupDateModel.getNextRefusePickupDate(pickupInfo, holidayList, now).getDate(); 
@@ -134,22 +141,6 @@ public class PghRecycles extends Activity {
 	}
 	
 	Handler mHandler = new Handler();
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_pgh_recycles, menu);
-		return true;
-	}
-	
-	@Override
-	public void onStart() {
-		super.onStart();
-		
-		// initialize connection to database
-		// TODO move this out of activity creation?
-		pickupInfoProvider = new DBPickupInfoProvider(this);
-	}
 	
 	private void test() {
 		
@@ -329,6 +320,6 @@ public class PghRecycles extends Activity {
 		// TODO move this out of activity creation?
 		pickupInfoProvider = new DBPickupInfoProvider(this);
 		divisionInfoProvider = new DBDivisionInfoProvider(this);
-		
+		holidayListProvider = new DBHolidayListProvider(this);
 	}
 }
