@@ -85,7 +85,7 @@
 	<string name="schedule_title_next_debris">Your Next Yard Debris Pickup Is:</string>
 	
 	<string name="check_in_button_title">Check In!</string>
-    <string name="title_activity_hood">HoodActivity</string>
+    <string name="title_activity_hood">Your Neighborhood</string>
     <color name="recycler_bg_color">#CCFFCC</color>
     
 			

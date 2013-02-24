@@ -93,6 +93,8 @@ public class Dashboard extends Activity {
 			@Override
 			public void onClick(View v) {
 				//Toast.makeText(getApplicationContext(), "Your Hood Pressed", Toast.LENGTH_LONG).show();
+				Intent i = new Intent(getBaseContext(), HoodActivity.class);
+				startActivity(i);						
 			}
 		});
 	}
