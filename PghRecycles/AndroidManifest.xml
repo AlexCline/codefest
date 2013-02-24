@@ -97,7 +97,7 @@
         <activity
             android:name="com.pghrecycles.pghrecycles.HoodActivity"
         	android:screenOrientation="portrait"
-        	android:launchMode="singleTask"              
+        	android:launchMode="singleTask"
             android:label="@string/title_activity_hood" >
         </activity>        
     </application>
