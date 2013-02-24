@@ -21,7 +21,7 @@ public class MockPickupInfoProvider implements PickupInfoProvider {
 		pickupInfo.setLeftHigh(2);
 		pickupInfo.setRightLow(1);
 		pickupInfo.setRightHigh(2);
-		pickupInfo.setDivision(DivisionInfo.Division.NORTHERN);
+		pickupInfo.setDivision(DivisionInfo.Division.CENTRAL);
 		
 		return pickupInfo;
 	}

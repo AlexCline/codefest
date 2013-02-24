@@ -20,5 +20,5 @@
     <string name="notification_debris_title">"Yard Debris day is almost here!"</string>
     <string name="notification_debris_content">"Yard Debris day is %1$s!"</string>
     <string name="title_activity_check_in">CheckInActivity</string>
-
+	<string name="address_not_found">This address may not be a residential address, please try another!</string>
 </resources>

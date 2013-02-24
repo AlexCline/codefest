@@ -31,7 +31,7 @@ public class PickupDateModel {
 	public HolidayList getHolidayList(Time date) {
 		return mHolidayListProvider.getHolidayList(date);
 	}
-	public DivisionInfo getDisivionInfo(Division division, Time date) {
+	public DivisionInfo getDivisionInfo(Division division, Time date) {
 		return mDivisionInfoProvider.getDivisionInfo(division, date);
 	}
 	

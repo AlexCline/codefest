@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.format.Time;
 import android.util.Log;
 
+import com.pghrecycles.pghrecycles.data.DateTimeUtil;
 import com.pghrecycles.pghrecycles.data.Holiday;
 import com.pghrecycles.pghrecycles.data.HolidayList;
 
@@ -60,9 +61,13 @@ public class DBHolidayListProvider implements HolidayListProvider {
 				String name = resultsHoliday.getString(colHolidayName);
 				Time time = new Time();
 				time.set((long)dateEpoch * (long)1000);
+								
 				time.normalize(true);
+				DateTimeUtil.setToMidnight(time);
+				
 				Holiday holiday = new Holiday(name, time);
 				holidayList.add(holiday);
+				//Log.e(this.getClass().getName(), "holiday; " + name + ": " + time.format3339(true));
 				resultsHoliday.moveToNext();
 			}
 			
