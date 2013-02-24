@@ -172,7 +172,7 @@
         android:typeface="monospace" />
 
     <ImageButton
-        android:id="@+id/checkInButton"
+        android:id="@+id/checkInButtonOld"
         android:layout_width="200dip"
         android:layout_height="200dip"
         android:layout_alignParentBottom="true"

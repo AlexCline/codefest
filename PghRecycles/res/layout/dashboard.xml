@@ -31,7 +31,7 @@
         android:src="@drawable/icon" />
 
     <ImageView
-        android:id="@+id/checkinButton"
+        android:id="@+id/checkInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -111,16 +111,6 @@
         android:src="@drawable/pickup_sched" />
 
     <ImageView
-        android:id="@+id/recycleAnythingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/pointsLabel"
-        android:layout_alignTop="@+id/pickUpScheduleButton"
-        android:layout_marginRight="36dp"
-        android:contentDescription="@string/recycle_anything"
-        android:src="@drawable/recycle_anything" />
-
-    <ImageView
         android:id="@+id/yourHoodButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,8 +123,9 @@
         android:id="@+id/notifyHolder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/yourHoodButton"
         android:layout_alignTop="@+id/homeButton"
+        android:layout_marginRight="33dp"
+        android:layout_toLeftOf="@+id/checkInButton"
         android:background="#66CCFF"
         android:contentDescription="@string/notifications"
         android:padding="5sp"
@@ -142,5 +133,15 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/recycleAnythingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/checkInButton"
+        android:layout_alignTop="@+id/pickUpScheduleButton"
+        android:layout_marginRight="35dp"
+        android:contentDescription="@string/recycle_anything"
+        android:src="@drawable/recycle_anything" />
 
 </RelativeLayout>
