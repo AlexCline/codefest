@@ -9,7 +9,7 @@
 
     <!-- sdk16 is required for notifier; asus transformer currently runs only sdk15 -->
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="17" />
 
     <uses-feature
