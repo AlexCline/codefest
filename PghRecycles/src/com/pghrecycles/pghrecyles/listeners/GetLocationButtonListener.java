@@ -18,7 +18,6 @@ public class GetLocationButtonListener extends Activity implements OnClickListen
 	
 	public GetLocationButtonListener(Context context){
 		this.context = context;
-		Log.e("PghRecycles", context.toString());
 	}
 	
 	@Override

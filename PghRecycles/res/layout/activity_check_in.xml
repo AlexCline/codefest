@@ -1,14 +1,93 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".CheckInActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/checkin_criteria"
+        android:layout_alignParentTop="true"
+        class="com.google.android.gms.maps.MapFragment" />
+
+    <LinearLayout
+        android:id="@+id/checkin_criteria"
+        android:layout_width="fill_parent"
+        android:padding="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"        
+        android:orientation="vertical" >
+         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+        
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+ 			android:text="What are you doing?"
+            android:textSize="22dp"
+            />
+		    
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:text="Putting out the trash" />
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/checkin_criteria"
+            android:layout_toLeftOf="@+id/checkin_button"
+            android:textSize="22dp"
+            android:text="... and my recycling" />
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:text="Dropping of a bulk item" />
+        
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:text="Upcycling!" />
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:text="Cleaning up the Neighborhood" />
+                </LinearLayout>
+        
+    <LinearLayout
+        android:id="@+id/checkin_button_container"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world" />
+        android:padding="10dp"
+        android:background="#ccc"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true" >
+        <Button
+            android:id="@+id/checkin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+  			android:gravity="center_horizontal"
+	        android:layout_weight="1"
+            android:text="Check in!" />        
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 </RelativeLayout>

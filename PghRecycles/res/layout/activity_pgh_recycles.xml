@@ -119,13 +119,19 @@
         android:layout_marginRight="18dp"
         android:text="Lookup" />
 
+    <Button
+        android:id="@+id/buttonCheckout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:text="Checkout" />
+
     <ImageButton
         android:id="@+id/getLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextZip"
-        android:layout_below="@+id/editTextZip"
-        android:layout_marginTop="50dp"
+        android:layout_above="@+id/textView1"
+        android:layout_alignLeft="@+id/textView1"
         android:contentDescription="@string/get_location_button"
         android:src="@android:drawable/ic_menu_mylocation" />
 
@@ -133,9 +139,44 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/getLocationButton"
-        android:layout_below="@+id/getLocationButton"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/buttonDoLookup"
         android:text="@string/get_location"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/pointsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pointsHolder"
+        android:layout_alignBottom="@+id/pointsHolder"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="59dp"
+        android:text="@string/points_label"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"
+        android:typeface="monospace" />
+
+    <TextView
+        android:id="@+id/pointsHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextZip"
+        android:layout_below="@+id/editTextZip"
+        android:layout_toLeftOf="@+id/pointsLabel"
+        android:gravity="right"
+        android:text="@string/points_holder"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="120sp"
+        android:typeface="monospace" />
+
+    <ImageButton
+        android:id="@+id/checkInButton"
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/pointsHolder"
+        android:background="@android:drawable/checkbox_on_background" />
 
 </RelativeLayout>

@@ -29,5 +29,6 @@
     <string name="title_recycle_detail">Item Detail</string>
 	<string name="recycling_category_name_1">Plastic</string>
 	<string name="recycling_category_details_1">(Plastic details)</string>
-    
+	<string name="points_holder">####</string>
+	<string name="points_label">POINTS</string>
 </resources>
