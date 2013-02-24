@@ -21,8 +21,8 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/textView3"
         android:ems="10"
-        android:text="925"
-        android:inputType="number" >
+        android:inputType="number"
+        android:text="925" >
 
         <requestFocus />
     </EditText>
@@ -42,8 +42,8 @@
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
         android:ems="10"
-        android:text="chislett"
-        android:inputType="text" />
+        android:inputType="text"
+        android:text="chislett" />
 
     <TextView
         android:id="@+id/textView5"
@@ -60,16 +60,8 @@
         android:layout_alignLeft="@+id/textView5"
         android:layout_below="@+id/textView5"
         android:ems="10"
-        android:text="15206"        
-        android:inputType="number" />
-
-    <Button
-        android:id="@+id/buttonDoLookup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:text="@string/lookup" />
+        android:inputType="number"
+        android:text="15206" />
 
     <TextView
         android:id="@+id/textView1"
@@ -89,10 +81,11 @@
         android:ems="10" />
 
     <LinearLayout
-        android:layout_below="@+id/editTextResults"
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editTextZip"
+        android:layout_below="@+id/editTextResults"
         android:orientation="vertical" >
 
         <TextView
@@ -116,5 +109,33 @@
             android:layout_marginTop="28dp"
             android:text="next_yard_debris_date" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonDoLookup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextResults"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="18dp"
+        android:text="Lookup" />
+
+    <ImageButton
+        android:id="@+id/getLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextZip"
+        android:layout_below="@+id/editTextZip"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/get_location_button"
+        android:src="@android:drawable/ic_menu_mylocation" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/getLocationButton"
+        android:layout_below="@+id/getLocationButton"
+        android:text="@string/get_location"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

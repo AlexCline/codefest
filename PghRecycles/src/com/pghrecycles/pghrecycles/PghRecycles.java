@@ -1,29 +1,18 @@
 package com.pghrecycles.pghrecycles;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Random;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.IntentFilter.MalformedMimeTypeException;
-import android.nfc.NdefMessage;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcAdapter.OnNdefPushCompleteCallback;
-import android.nfc.NfcEvent;
-import android.nfc.tech.TagTechnology;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.pghrecycles.pghrecycles.data.DivisionInfo;
@@ -35,7 +24,6 @@ import com.pghrecycles.pghrecycles.data.PickupInfo;
 import com.pghrecycles.pghrecycles.data.providers.DBDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
-import com.pghrecycles.pghrecycles.data.providers.GeoLocationProvider;
 import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockDivisionInfoProvider;
@@ -44,6 +32,7 @@ import com.pghrecycles.pghrecycles.data.providers.MockPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
 import com.pghrecycles.pghrecycles.model.PickupDateModel;
 import com.pghrecycles.pghrecycles.notification.Notifier;
+import com.pghrecycles.pghrecyles.listeners.GetLocationButtonListener;
 
 public class PghRecycles extends Activity {
 
@@ -63,32 +52,17 @@ public class PghRecycles extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pgh_recycles);
 		
-		
-		
-		/* NFC STUFF HERE */
-		//mAdapter = NfcAdapter.getDefaultAdapter(this);
-//		mPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
-//				getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-//		IntentFilter ndef = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
-//		try {
-//			ndef.addDataType("*/*");
-//		} catch (MalformedMimeTypeException e) {
-//			throw new RuntimeException("fail", e);
-//		}
-//		mFilters = new IntentFilter[] { ndef, };
-//		mTechLists = new String[][] { new String[] { TagTechnology.class.getName() } };
-
-	   
-		
-		
-		
 		mPickupDateModel = new PickupDateModel(new MockPickupInfoProvider(), new MockDivisionInfoProvider(), new MockHolidayListProvider());
+		
+		ImageButton btnGetLocation = (ImageButton)findViewById(R.id.getLocationButton);
+		btnGetLocation.setOnClickListener(new GetLocationButtonListener(this));
 		
 		// initialize button listener
 		// TODO move this out of activity creation?
 		final Button button = (Button) findViewById(R.id.buttonDoLookup);
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
             	// build LocationInfo object
             	int zip = -1;
             	try {
@@ -176,28 +150,6 @@ public class PghRecycles extends Activity {
         		}, new Random().nextInt(60000)+30000);      
             }
         });
-        
-
-		GeoLocationProvider geo = new GeoLocationProvider(this);
-		if(geo.canGetLocation()) {
-		    double latitude = geo.getLatitude();
-		    double longitude = geo.getLongitude();
-		    
-		    ArrayList<String> streetAddr = geo.getStreetAddress();
-		    
-		    ((EditText)findViewById(R.id.editTextAddress)).setText(streetAddr.get(0));
-		    ((EditText)findViewById(R.id.editTextStreet)).setText(streetAddr.get(1));
-		    ((EditText)findViewById(R.id.editTextZip)).setText(streetAddr.get(2));
-		    
-		    // \n is for new line
-		    Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + 
-		    		"\nLong: " + longitude, Toast.LENGTH_LONG).show();
-		    Toast.makeText(getApplicationContext(), "Your Address is - \n" + streetAddr, 
-		    		Toast.LENGTH_LONG).show();
-		} else {
-			Log.e("PghRecycles", " Unable to get geolocation");
-			geo.showSettingsAlert();
-		}
 
 	}
 	

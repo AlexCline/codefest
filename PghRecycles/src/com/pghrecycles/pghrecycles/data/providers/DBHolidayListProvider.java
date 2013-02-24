@@ -27,7 +27,7 @@ public class DBHolidayListProvider implements HolidayListProvider {
 	private SQLiteDatabase db;
 	
 	public DBHolidayListProvider(Context context) {
-		this.context = context;
+		DBHolidayListProvider.context = context;
 		dbOpener = DataBaseHelper.getDBHelper(context);
 		db = dbOpener.getReadableDatabase();
 	}

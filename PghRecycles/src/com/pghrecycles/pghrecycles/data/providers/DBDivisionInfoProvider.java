@@ -34,7 +34,7 @@ public class DBDivisionInfoProvider implements DivisionInfoProvider {
 	private SQLiteDatabase db;
 	
 	public DBDivisionInfoProvider(Context context) {
-		this.context = context;
+		DBDivisionInfoProvider.context = context;
 		dbOpener = DataBaseHelper.getDBHelper(context);
 		db = dbOpener.getReadableDatabase();
 	}
