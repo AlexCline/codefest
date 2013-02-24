@@ -1,17 +1,14 @@
 package com.pghrecycles.pghrecycles;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.format.Time;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,7 +28,6 @@ import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
 import com.pghrecycles.pghrecycles.model.ApplicationState;
 import com.pghrecycles.pghrecycles.model.PickupDateModel;
-import com.pghrecycles.pghrecycles.notification.Notifier;
 
 public class SetupLocationActivity extends Activity {
 	PickupInfoProvider pickupInfoProvider;
@@ -54,12 +50,13 @@ public class SetupLocationActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_setup_location);
 		
-		this.getActionBar().setHomeButtonEnabled(true);
-		this.getActionBar().setDisplayHomeAsUpEnabled(true);
-		this.getActionBar().setTitle(R.string.title_activity_setup_location);
-		
+//		this.getActionBar().setHomeButtonEnabled(true);
+//		this.getActionBar().setDisplayHomeAsUpEnabled(true);
+//		this.getActionBar().setTitle(R.string.title_activity_setup_location);
+//		
 		Button btnGetLocation = (Button)findViewById(R.id.getLocationButton);
 		
 		

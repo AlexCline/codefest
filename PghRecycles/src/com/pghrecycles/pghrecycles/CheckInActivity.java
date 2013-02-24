@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.CheckBox;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -151,6 +152,10 @@ public class CheckInActivity extends Activity {
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
         mInfoText.setText(new String(msg.getRecords()[0].getPayload()));*/
-    	Log.e("PghRecycles", "processing.. new intent");
+    	//Log.e("PghRecycles", "processing.. new intent");
+    	CheckBox cb1 = (CheckBox) findViewById(R.id.checkBox1);
+    	cb1.setChecked(true);
+    	CheckBox cb2 = (CheckBox) findViewById(R.id.checkBox2);
+    	cb2.setChecked(true);
     }	
 }

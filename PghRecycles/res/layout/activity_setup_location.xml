@@ -13,68 +13,82 @@
         android:orientation="vertical"
         android:padding="20dp" >
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:text="@string/enter_street_address"
-            android:textSize="26dp" />
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/letsgetstarted" />
 
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/address_num"
-            android:textSize="20dp" />
-
-        <EditText
-            android:background="@drawable/edit_text_holo_light"
-            android:id="@+id/editTextAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:ems="10"
-            android:inputType="number"
-            android:text="925"
-            android:textSize="20dp" >
-        </EditText>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextAddress"
-            android:text="@string/street"
-            android:textSize="20dp" />
-
-        <EditText
-            android:background="@drawable/edit_text_holo_light"            
-            android:id="@+id/editTextStreet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Chislett"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zip"
-            android:textSize="20dp" />
-
-        <EditText
-            android:background="@drawable/edit_text_holo_light"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
             
-            android:id="@+id/editTextZip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:text="15206"
-            android:textSize="20dp" />
+            android:layout_weight="1"
+            android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="@string/enter_street_address"
+                android:textSize="26dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_num"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/editTextAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:background="@drawable/edit_text_holo_light"
+                android:ems="10"
+                android:inputType="number"
+                android:text=""
+                android:textSize="20dp" >
+            </EditText>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextAddress"
+                android:text="@string/street"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/editTextStreet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_holo_light"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zip"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/editTextZip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_holo_light"
+                android:ems="10"
+                android:inputType="number"
+                android:text=""
+                android:textSize="20dp" />
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -82,21 +96,24 @@
 
             <Button
                 android:id="@+id/buttonDoLookup"
-                android:background="@drawable/btn_default_holo_light"
-                android:textColor="#fff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Lookup" />
+                android:background="@drawable/btn_default_holo_light"
+                android:text="Search"
+                android:textColor="#fff" />
 
             <Button
                 android:id="@+id/getLocationButton"
-                android:background="@drawable/btn_default_holo_light"
-                android:textColor="#fff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_default_holo_light"
                 android:drawableLeft="@android:drawable/ic_menu_mylocation"
                 android:text="Use GPS Location"
-                 />
+                android:textColor="#fff" />
         </LinearLayout>
+            </LinearLayout>
+
+
     </LinearLayout>
+
 </RelativeLayout>
