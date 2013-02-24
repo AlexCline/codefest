@@ -36,15 +36,14 @@ public class GetLocationButtonListener extends Activity implements OnClickListen
 		    ((EditText)parent.findViewById(R.id.editTextZip)).setText(streetAddr.get(2));
 		    
 		    // \n is for new line
-		    Toast.makeText(context.getApplicationContext(), "Your Location is - \nLat: " + latitude + 
-		    		"\nLong: " + longitude, Toast.LENGTH_LONG).show();
-		    Toast.makeText(context.getApplicationContext(), "Your Address is - \n" + streetAddr, 
-		    		Toast.LENGTH_LONG).show();
+//		    Toast.makeText(context.getApplicationContext(), "Your Location is - \nLat: " + latitude + 
+//		    		"\nLong: " + longitude, Toast.LENGTH_LONG).show();
+//		    Toast.makeText(context.getApplicationContext(), "Your Address is - \n" + streetAddr, 
+//		    		Toast.LENGTH_LONG).show();
 		} else {
 			Log.e("PghRecycles", " Unable to get geolocation");
 			geo.showSettingsAlert();
 		}
 		//read your lovely variable
 	}
-
 };

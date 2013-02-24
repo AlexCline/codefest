@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScheduleActivity" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical" >
+<!--         
+	<string name="schedule_title_pickup">Your Pickup Day Is:</string>
+	<string name="schedule_title_next_pickup">Your Next Pickup Is:</string>
+	<string name="schedule_title_next_recycling">Your Next Recycling Pickup Is:</string>
+	<string name="schedule_title_next_debris">Your Next Yard Debris Pickup Is:</string>
+ -->        
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:textSize="@dimen/text_size_big_title" android:layout_marginBottom="5dp"
+            android:text="@string/schedule_title_pickup" />
+        <TextView
+            android:id="@+id/next_pickup_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_big_subtitle" android:layout_marginBottom="25dp"
+            android:text="next_pickup_day" />
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:textSize="@dimen/text_size_big_title" android:layout_marginBottom="5dp"
+            android:text="@string/schedule_title_next_pickup" />			
+        <TextView
+            android:id="@+id/next_pickup_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_big_subtitle" android:layout_marginBottom="25dp"
+            android:text="next_pickup_date" />
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:textSize="@dimen/text_size_big_title" android:layout_marginBottom="5dp"
+            android:text="@string/schedule_title_next_recycling" />	
+        <TextView
+            android:id="@+id/next_recycle_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_big_subtitle" android:layout_marginBottom="25dp"
+            android:text="next_recycle_date" />
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:textSize="@dimen/text_size_big_title" android:layout_marginBottom="5dp"
+            android:text="@string/schedule_title_next_debris" />	        
+        <TextView
+            android:id="@+id/next_yard_debris_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_big_subtitle" android:layout_marginBottom="25dp"
+            android:text="next_yard_debris_date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkin_button_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:background="#ccc"
+        android:padding="25dp" >
+
+        <Button
+            android:id="@+id/checkin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Check in!" />
+    </LinearLayout>
+</RelativeLayout>
