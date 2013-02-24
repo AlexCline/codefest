@@ -61,13 +61,29 @@ public class CheckInActivity extends Activity {
         btnCheckIn.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
+
+				int points = 0;
+		    	CheckBox cb1 = (CheckBox) findViewById(R.id.checkBox1);
+		    	CheckBox cb2 = (CheckBox) findViewById(R.id.checkBox2);
+		    	CheckBox cb3 = (CheckBox) findViewById(R.id.checkBox3);
+		    	CheckBox cb4 = (CheckBox) findViewById(R.id.checkBox4);
+		    	CheckBox cb5 = (CheckBox) findViewById(R.id.checkBox5);
+		    	
+		    	points += (cb1.isChecked() ? 100 : 0);
+		    	points += (cb2.isChecked() ? 100 : 0);
+		    	points += (cb3.isChecked() ? 100 : 0);
+		    	points += (cb4.isChecked() ? 150 : 0);
+		    	points += (cb5.isChecked() ? 300 : 0);
+		    	
+		    	final int pointsF = points;
+		    	
 				new AlertDialog.Builder(context)
 			    .setTitle("Check-In Successful!")
-			    .setMessage(R.string.dialog_confirm_checkin)
+			    .setMessage("You've successfully checked in and have gained " + points + " points!  Congratulations!")
 			    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			        public void onClick(DialogInterface dialog, int which) {
 			        	ApplicationState mApplicationState = ApplicationState.getInstance();
-			        	mApplicationState.addPoints(100);
+			        	mApplicationState.addPoints(pointsF);
 			        	Intent i = new Intent(getBaseContext(), Dashboard.class);
 						startActivity(i);
 			        }
