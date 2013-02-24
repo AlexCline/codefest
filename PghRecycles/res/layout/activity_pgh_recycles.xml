@@ -64,7 +64,7 @@
         android:text="15206" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editTextResults"
@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editTextZip"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/points"
         android:ems="10" />
 
     <LinearLayout
@@ -130,8 +130,8 @@
         android:id="@+id/getLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_above="@+id/points"
+        android:layout_alignLeft="@+id/points"
         android:contentDescription="@string/get_location_button"
         android:src="@android:drawable/ic_menu_mylocation" />
 
@@ -139,7 +139,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/points"
         android:layout_below="@+id/buttonDoLookup"
         android:text="@string/get_location"
         android:textAppearance="?android:attr/textAppearanceMedium" />
