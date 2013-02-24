@@ -5,21 +5,23 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 /**
- * An activity representing a list of Items. This activity has different
+ * An activity representing a list of Recyclables. This activity has different
  * presentations for handset and tablet-size devices. On handsets, the activity
  * presents a list of items, which when touched, lead to a
- * {@link ItemDetailActivity} representing item details. On tablets, the
+ * {@link RecyclableDetailActivity} representing item details. On tablets, the
  * activity presents the list of items and item details side-by-side using two
  * vertical panes.
  * <p>
  * The activity makes heavy use of fragments. The list of items is a
- * {@link ItemListFragment} and the item details (if present) is a
- * {@link ItemDetailFragment}.
+ * {@link RecyclableListFragment} and the item details (if present) is a
+ * {@link RecyclableDetailFragment}.
  * <p>
- * This activity also implements the required {@link ItemListFragment.Callbacks}
- * interface to listen for item selections.
+ * This activity also implements the required
+ * {@link RecyclableListFragment.Callbacks} interface to listen for item
+ * selections.
  */
-public class RecyclingListActivity extends FragmentActivity implements RecyclingListFragment.Callbacks {
+public class RecyclableListActivity extends FragmentActivity implements
+		RecyclableListFragment.Callbacks {
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -30,9 +32,9 @@ public class RecyclingListActivity extends FragmentActivity implements Recycling
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_recycle_list);
+		setContentView(R.layout.activity_recyclable_list);
 
-		if (findViewById(R.id.item_detail_container) != null) {
+		if (findViewById(R.id.recyclable_detail_container) != null) {
 			// The detail container view will be present only in the
 			// large-screen layouts (res/values-large and
 			// res/values-sw600dp). If this view is present, then the
@@ -41,16 +43,17 @@ public class RecyclingListActivity extends FragmentActivity implements Recycling
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
-			((RecyclingListFragment) getSupportFragmentManager().findFragmentById(
-					R.id.item_list)).setActivateOnItemClick(true);
+			((RecyclableListFragment) getSupportFragmentManager()
+					.findFragmentById(R.id.recyclable_list))
+					.setActivateOnItemClick(true);
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
 
 	/**
-	 * Callback method from {@link ItemListFragment.Callbacks} indicating that
-	 * the item with the given ID was selected.
+	 * Callback method from {@link RecyclableListFragment.Callbacks} indicating
+	 * that the item with the given ID was selected.
 	 */
 	@Override
 	public void onItemSelected(String id) {
@@ -59,17 +62,19 @@ public class RecyclingListActivity extends FragmentActivity implements Recycling
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(RecyclingDetailFragment.ARG_ITEM_ID, id);
-			RecyclingDetailFragment fragment = new RecyclingDetailFragment();
+			arguments.putString(RecyclableDetailFragment.ARG_ITEM_ID, id);
+			RecyclableDetailFragment fragment = new RecyclableDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.item_detail_container, fragment).commit();
+					.replace(R.id.recyclable_detail_container, fragment)
+					.commit();
 
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
-			Intent detailIntent = new Intent(this, RecyclingDetailActivity.class);
-			detailIntent.putExtra(RecyclingDetailFragment.ARG_ITEM_ID, id);
+			Intent detailIntent = new Intent(this,
+					RecyclableDetailActivity.class);
+			detailIntent.putExtra(RecyclableDetailFragment.ARG_ITEM_ID, id);
 			startActivity(detailIntent);
 		}
 	}

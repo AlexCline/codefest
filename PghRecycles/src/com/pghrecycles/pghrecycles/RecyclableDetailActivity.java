@@ -7,19 +7,20 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
 /**
- * An activity representing a single Item detail screen. This activity is only
- * used on handset devices. On tablet-size devices, item details are presented
- * side-by-side with a list of items in a {@link ItemListActivity}.
+ * An activity representing a single Recyclable detail screen. This activity is
+ * only used on handset devices. On tablet-size devices, item details are
+ * presented side-by-side with a list of items in a
+ * {@link RecyclableListActivity}.
  * <p>
  * This activity is mostly just a 'shell' activity containing nothing more than
- * a {@link ItemDetailFragment}.
+ * a {@link RecyclableDetailFragment}.
  */
-public class RecyclingDetailActivity extends FragmentActivity {
+public class RecyclableDetailActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_recycle_detail);
+		setContentView(R.layout.activity_recyclable_detail);
 
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -37,12 +38,14 @@ public class RecyclingDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(RecyclingDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(RecyclingDetailFragment.ARG_ITEM_ID));
-			RecyclingDetailFragment fragment = new RecyclingDetailFragment();
+			arguments.putString(
+					RecyclableDetailFragment.ARG_ITEM_ID,
+					getIntent().getStringExtra(
+							RecyclableDetailFragment.ARG_ITEM_ID));
+			RecyclableDetailFragment fragment = new RecyclableDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.item_detail_container, fragment).commit();
+					.add(R.id.recyclable_detail_container, fragment).commit();
 		}
 	}
 
@@ -57,8 +60,8 @@ public class RecyclingDetailActivity extends FragmentActivity {
 			//
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
-			NavUtils.navigateUpTo(this,
-					new Intent(this, RecyclingListActivity.class));
+			NavUtils.navigateUpTo(this, new Intent(this,
+					RecyclableListActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

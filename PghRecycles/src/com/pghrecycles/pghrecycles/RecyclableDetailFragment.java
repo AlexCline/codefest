@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 /**
- * A fragment representing a single Item detail screen. This fragment is either
- * contained in a {@link ItemListActivity} in two-pane mode (on tablets) or a
- * {@link ItemDetailActivity} on handsets.
+ * A fragment representing a single Recyclable detail screen. This fragment is
+ * either contained in a {@link RecyclableListActivity} in two-pane mode (on
+ * tablets) or a {@link RecyclableDetailActivity} on handsets.
  */
-public class RecyclingDetailFragment extends Fragment {
+public class RecyclableDetailFragment extends Fragment {
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -29,7 +28,7 @@ public class RecyclingDetailFragment extends Fragment {
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public RecyclingDetailFragment() {
+	public RecyclableDetailFragment() {
 	}
 
 	@Override
@@ -42,19 +41,20 @@ public class RecyclingDetailFragment extends Fragment {
 			// to load content from a content provider.
 			mItem = RecyclingDataPopulator.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
+			
 		}
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_recycle_detail,
+		View rootView = inflater.inflate(R.layout.fragment_recyclable_detail,
 				container, false);
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
-			((TextView) rootView.findViewById(R.id.item_detail))
-					.setText(mItem.content);
+			((TextView) rootView.findViewById(R.id.recyclable_detail))
+					.setText(mItem.details);
 		}
 
 		return rootView;

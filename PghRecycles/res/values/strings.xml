@@ -27,8 +27,46 @@
     <string name="action_settings">Settings</string>
     <string name="title_recycle_list">Items</string>
     <string name="title_recycle_detail">Item Detail</string>
-	<string name="recycling_category_name_1">Plastic</string>
-	<string name="recycling_category_details_1">(Plastic details)</string>
-	<string name="points_holder">####</string>
-	<string name="points_label">POINTS</string>
+    <string name="recycling_category_name_1">Plastic</string>
+    <string name="recycling_category_details_1">Plastic containers labelled as 1, 2, 3, 4, or 5 can be recycled. Rinse containers and discard all lids and caps. </string>
+    <string name="points_holder">####</string>
+    <string name="points_label">POINTS</string>
+    <string name="title_recyclable_list">Recyclables</string>
+    <string name="title_recyclable_detail">Recyclable Detail</string>
+    <string name="recycling_category_name_2">Glass</string>
+    <string name="recycling_category_details_2">Glass jars and bottles can be recycled curbside. </string>
+    <string name="recycling_category_name_3">Metal Containers</string>
+    <string name="recycling_category_details_3">Aluminum, steel, and bi-metal containers can be recycled, including empty paint and aerosol cans.
+        \n Rinse containers and discard all lids and caps. Place in blue bags only (or bright blue containers clearly marked "Recycling").</string>
+    <string name="recycling_category_name_4">Leaves, Grass, Trimmings, etc</string>
+    <string name="recycling_category_details_4"> On yard debris pickup days the City will collect leaves, yard debris, tree and grass clippings from all residences to be composted at the City’s contracted composting center.  Residents need to bundle and tie materials or place in compostable paper yard debris bags. City residents may also drop off yard debris at collection centers. Proof of residency is required.
+		\n\n The City does accept:
+		\nLeaves, Grass, Plants, Tree Trimmings, Branches, Shrubs - loose or placed in paper bags (no plastic bags accepted).
+		\n\n The City does not accept:
+		\nStones, Dirt, Rocks, Manure, Garbage, Lumber or food waste, (Stones, dirt, rocks also not collected at curb side).
+		\n\n Drop Off Locations (more information)
+		\nEast End Center (412-665-3609), Hazelwood Center (412-422-6524), West End Center (412-937-3054)
+		</string>
+    <string name="recycling_category_name_5">TV\'s and Computers</string>
+    <string name="recycling_category_details_5"> The City is no longer legally permitted to collect TVs, computers  and computer parts at the curb. Televisions, computers, and computer peripherals including monitors, keyboards, mice, external drives, and printers must be taken to an electronics retail store to be recycled at no charge. 
+        \n\n Below are the nearest locations to take electronics for recycling drop off: 
+        \n\n<u>Radio Shack - Waterfront - 0.9 Miles</u>
+        \n<u>Best Buy - McKnight Road - 1.2 Miles</u>
+        \n<u>Best Buy - Moon Township - 5.1 Miles</u>
+        \n<u>Best Buy - Pittsburgh Mills - 2.4 Miles</u></string>
+    <string name="recycling_category_name_6">Freon Appliances</string>
+    <string name="recycling_category_details_6">To make arrangements to dispose of Freon appliances (refrigerators, air conditioners, dehumidifiers), contact Construction Junction (412-243-5025) or Appliance Warehouse (412-381-8800).
+        \n\n Below are the nearest locations to take freon appliances for recycling:
+        \n\n<u>East End Drop-Off Center - West Homewood/East Liberty - 0.8 Miles</u>
+        \n<u>Construction Junction - Point Breeze - 1.2 Miles</u></string>
+    <string name="recycling_category_name_7">Paper Products</string>
+    <string name="recycling_category_details_7"> Magazines, catalogs, paperboard, junk mail, mixed paper, phonebooks, and office paper (all colors) can all be recycled at the curb. Corrugated cardboard must be broken down, flattened and tied. Pizza boxes must be clean and empty (that is, free of food and wax paper).</string>
+    <string name="recycling_category_name_0">general recycling guidelines</string>
+    <string name="recycling_category_details_0"> You do not have to put recyclable items in separate bags. All recyclables can be mixed together in the same blue plastic bag. Also, please discard all caps and lids from bottles and please do not add any other materials to the list above, otherwise they will contaminate the recycling. </string>
+    <string name="recycling_category_name_8">non-recyclables</string>
+    <string name="recycling_category_details_8"> In addition to household refuse, crews will accept chairs, small TVs, bikes, small appliances, garden tools, end tables, ironing boards, roasters and grills. Place all refuse at the designated site on collection day in plastic bags or bagged and placed into a container not exceeding 35 gallons in size. Place needles, syringes and lancets in a hard plastic container with a tight-fitting plastic lid, labeled as medical waste. Styrofoam can be disposed of in your regular garbage. 
+        \n\n A maximum of two bulk items may be collected per week. Bulk items include sofas, recliner chairs, tables, box springs, mattresses, dressers, large TVs, stoves, washers, dryers, toilets, hot water tanks, windows, and fencing in bundles not exceeding 35 pounds or 5 feet in length.
+         </string>
+    <string name="recycle_everything_title">Recycle (almost) Everything!</string>
+    
 </resources>

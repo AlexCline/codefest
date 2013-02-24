@@ -3,6 +3,7 @@ package com.pghrecycles.pghrecycles;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,11 +44,15 @@ public class PghRecycles extends Activity {
 	PickupDateModel mPickupDateModel;
 	
 	PointsProvider pointsProvider = new PointsProvider();
+	
+	// ugly static way to get a context
+	public static Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pgh_recycles);
+		context = this;
 		
 		ImageButton btnGetLocation = (ImageButton)findViewById(R.id.getLocationButton);
 		btnGetLocation.setOnClickListener(new GetLocationButtonListener(this));
@@ -158,7 +163,7 @@ public class PghRecycles extends Activity {
 				}
 				
 				// for testing the recycling panel
-				Intent loadRecyclingIntent = new Intent(pghRecyclesActivity, RecyclingListActivity.class);
+				Intent loadRecyclingIntent = new Intent(pghRecyclesActivity, RecyclableListActivity.class);
 				//detailIntent.putExtra(ItemListActivity.SOME_KEY, someVal);  // in case we want to jump to a particular page?
 				try {
 					Thread.sleep(500);
