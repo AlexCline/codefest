@@ -3,18 +3,7 @@ package com.pghrecycles.pghrecycles;
 import java.util.Random;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.IntentFilter.MalformedMimeTypeException;
-import android.net.Uri;
-import android.nfc.NdefMessage;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcAdapter.OnNdefPushCompleteCallback;
-import android.nfc.NfcEvent;
-import android.nfc.tech.TagTechnology;
-import java.util.ArrayList;
-import java.util.Random;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Time;
@@ -37,11 +26,12 @@ import com.pghrecycles.pghrecycles.data.providers.DBDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
-import com.pghrecycles.pghrecycles.data.providers.GeoLocationProvider;
 import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.PointsProvider;
 import com.pghrecycles.pghrecycles.model.PickupDateModel;
 import com.pghrecycles.pghrecycles.notification.Notifier;
+import com.pghrecycles.pghrecyles.listeners.CheckInButtonListener;
 import com.pghrecycles.pghrecyles.listeners.GetLocationButtonListener;
 
 public class PghRecycles extends Activity {
@@ -51,6 +41,8 @@ public class PghRecycles extends Activity {
 	HolidayListProvider holidayListProvider;
 
 	PickupDateModel mPickupDateModel;
+	
+	PointsProvider pointsProvider = new PointsProvider();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +51,13 @@ public class PghRecycles extends Activity {
 		
 		ImageButton btnGetLocation = (ImageButton)findViewById(R.id.getLocationButton);
 		btnGetLocation.setOnClickListener(new GetLocationButtonListener(this));
+		
+		ImageButton btnCheckIn = (ImageButton)findViewById(R.id.checkInButton);
+		btnCheckIn.setOnClickListener(new CheckInButtonListener(pointsProvider));
+		
+		//Get the points
+		
+		((TextView) findViewById(R.id.pointsHolder)).setText(Integer.toString(pointsProvider.getPoints()));
 		
 		pickupInfoProvider = new DBPickupInfoProvider(this);
 		divisionInfoProvider = new DBDivisionInfoProvider(this);
@@ -71,6 +70,7 @@ public class PghRecycles extends Activity {
 		final Button button = (Button) findViewById(R.id.buttonDoLookup);
 
 		button.setOnClickListener(new View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				// build LocationInfo object
 				int zip = -1;
@@ -94,7 +94,7 @@ public class PghRecycles extends Activity {
 				// do lookup for pickup
 				PickupInfo pickupInfo = mPickupDateModel.getPickupInfo(locationInfo, now);
 
-				if (pickupInfo != null) {
+				if (pickupInfo == null) {
 					Toast.makeText(PghRecycles.this, getResources().getString(R.string.address_not_found), Toast.LENGTH_SHORT).show();
 				} else {
 					int pickupDay = pickupInfo.getDay();

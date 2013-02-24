@@ -1,10 +1,6 @@
 package com.pghrecycles.pghrecycles.notification;
 
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.content.Context;
-
-import com.pghrecycles.pghrecycles.R;
 
 public class Notifier {
 	public static void notifyRealtime(Context context, CharSequence ticker, CharSequence title, CharSequence contentText) {
