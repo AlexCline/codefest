@@ -1,22 +1,12 @@
 package com.pghrecycles.pghrecycles.data.providers;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteStatement;
 import android.text.format.Time;
 import android.util.Log;
 
-import com.pghrecycles.pghrecycles.data.DivisionInfo;
 import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
 import com.pghrecycles.pghrecycles.data.LocationInfo;
 import com.pghrecycles.pghrecycles.data.PickupInfo;
@@ -53,7 +43,7 @@ public class DBPickupInfoProvider implements PickupInfoProvider {
 	private SQLiteDatabase db;
 
 	public DBPickupInfoProvider(Context context) {
-		this.context = context;
+		DBPickupInfoProvider.context = context;
 		dbOpener = DataBaseHelper.getDBHelper(context);
 		db = dbOpener.getReadableDatabase();
 	}
