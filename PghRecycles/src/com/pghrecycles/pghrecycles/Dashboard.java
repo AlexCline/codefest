@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pghrecycles.pghrecycles.data.providers.PointsProvider;
 import com.pghrecycles.pghrecycles.model.ApplicationState;
@@ -75,7 +74,9 @@ public class Dashboard extends Activity {
 		btnRecycleAnything.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "Recycle Anything Pressed", Toast.LENGTH_LONG).show();
+				RecyclingDataPopulator.initialize(getResources());
+				Intent i = new Intent(getBaseContext(), RecyclableListActivity.class);
+				startActivity(i);		
 			}
 		});
 		

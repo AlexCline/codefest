@@ -50,12 +50,8 @@
             android:launchMode="singleTask"
             android:theme="@style/AppThemeNoTitle"
             android:screenOrientation="portrait" >
-<!--             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
- -->        </activity>
+        </activity>
         <activity
             android:name="com.pghrecycles.pghrecycles.CheckInActivity"
         	android:launchMode="singleTask"            
@@ -80,5 +76,29 @@
         	android:launchMode="singleTask"              
             android:label="@string/title_activity_schedule" >
         </activity>
+        
+        
+        <activity
+            android:name="com.pghrecycles.pghrecycles.RecyclableListActivity"
+        	android:screenOrientation="portrait"
+        	android:launchMode="singleTask"              
+            android:label="@string/title_recyclable_list" >
+        </activity>
+        <activity
+            android:name="com.pghrecycles.pghrecycles.RecyclableDetailActivity"
+            android:label="@string/title_recyclable_detail"
+        	android:screenOrientation="portrait"
+        	android:launchMode="singleTask"              
+            android:parentActivityName=".RecyclableListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RecyclableListActivity" />
+        </activity>
+        <activity
+            android:name="com.pghrecycles.pghrecycles.HoodActivity"
+        	android:screenOrientation="portrait"
+        	android:launchMode="singleTask"              
+            android:label="@string/title_activity_hood" >
+        </activity>        
     </application>
 </manifest>
