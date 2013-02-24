@@ -157,22 +157,7 @@ public class PghRecycles extends Activity {
         		
         	}
 
-        	@Override
-        	public boolean onCreateOptionsMenu(Menu menu) {
-        		// Inflate the menu; this adds items to the action bar if it is present.
-        		getMenuInflater().inflate(R.menu.activity_pgh_recycles, menu);
-        		return true;
-        	}
-        	
-        	@Override
-        	public void onStart() {
-        		super.onStart();
-        		
-        		// initialize connection to database
-        		// TODO move this out of activity creation?
-        		pickupInfoProvider = new DBPickupInfoProvider(this);
-        		
-            }
+
         });
         
 
@@ -199,8 +184,6 @@ public class PghRecycles extends Activity {
 
 	}
 	
-	Handler mHandler = new Handler();
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -215,8 +198,12 @@ public class PghRecycles extends Activity {
 		// initialize connection to database
 		// TODO move this out of activity creation?
 		pickupInfoProvider = new DBPickupInfoProvider(this);
-	}
+		
+    }	
 	
+	Handler mHandler = new Handler();
+
+
 	private void test() {
 		
 		Time currentDate = new Time();
