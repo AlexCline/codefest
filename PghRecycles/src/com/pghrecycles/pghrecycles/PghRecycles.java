@@ -162,13 +162,13 @@ public class PghRecycles extends Activity {
 					}, new Random().nextInt(60000) + 30000);
 				}
 				
-				// for testing the recycling panel
-				Intent loadRecyclingIntent = new Intent(pghRecyclesActivity, RecyclableListActivity.class);
-				//detailIntent.putExtra(ItemListActivity.SOME_KEY, someVal);  // in case we want to jump to a particular page?
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e){}
-				startActivity(loadRecyclingIntent);
+//				// for testing the recycling panel
+//				Intent loadRecyclingIntent = new Intent(pghRecyclesActivity, RecyclableListActivity.class);
+//				//detailIntent.putExtra(ItemListActivity.SOME_KEY, someVal);  // in case we want to jump to a particular page?
+//				try {
+//					Thread.sleep(500);
+//				} catch (InterruptedException e){}
+//				startActivity(loadRecyclingIntent);
 				
 			}
 		});

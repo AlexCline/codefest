@@ -8,7 +8,8 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="vertical"
     android:showDividers="middle"
-    tools:context=".RecyclableListActivity" >
+    tools:context=".RecyclableListActivity"
+    android:background="@color/recycler_bg_color" >
     <!-- android:background="@drawable/pburgh_blue" -->
 
     <!--
@@ -21,22 +22,6 @@
     For more on layout aliases, see:
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.04"
-        android:columnCount="1" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_column="0"
-            android:layout_gravity="left|center_vertical"
-            android:layout_row="0"
-            android:text="@string/recycle_everything_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    </GridLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
