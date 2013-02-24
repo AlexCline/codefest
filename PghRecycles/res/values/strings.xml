@@ -10,17 +10,15 @@
     <string name="results">results</string>
     <string name="lookup">lookup</string>
     <string name="day_int_result">dayID</string>
-    
     <string name="notification_garbage_ticker">"GreenPerks: Time to Redd Up!"</string>
     <string name="notification_garbage_title">"Garbage day is coming up!"</string>
     <string name="notification_garbage_content">"Garbage day is %1$s!"</string>
-
     <string name="notification_recycle_ticker">"GreenPerks: Time to Redd Up!"</string>
     <string name="notification_recycle_title">"It's Recycling week!"</string>
     <string name="notification_recycle_content">"Garbage/Recycling day is %1$s!"</string>
-    
     <string name="notification_debris_ticker">"GreenPerks: Time to Redd Up!"</string>
     <string name="notification_debris_title">"Yard Debris day is almost here!"</string>
     <string name="notification_debris_content">"Yard Debris day is %1$s!"</string>
-    
+    <string name="title_activity_check_in">CheckInActivity</string>
+
 </resources>
