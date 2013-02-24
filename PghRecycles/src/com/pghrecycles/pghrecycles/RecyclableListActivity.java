@@ -3,6 +3,8 @@ package com.pghrecycles.pghrecycles;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * An activity representing a list of Recyclables. This activity has different
@@ -33,6 +35,9 @@ public class RecyclableListActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recyclable_list);
+		
+		this.getActionBar().setHomeButtonEnabled(true);
+		this.getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		if (findViewById(R.id.recyclable_detail_container) != null) {
 			// The detail container view will be present only in the
@@ -78,4 +83,25 @@ public class RecyclableListActivity extends FragmentActivity implements
 			startActivity(detailIntent);
 		}
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_schedule, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		case R.id.menu_settings:
+			Intent intent2 = new Intent(this, SetupLocationActivity.class);
+			startActivity(intent2);
+			return true;
+		}
+		return true;
+	}	
 }

@@ -55,7 +55,7 @@ public class RecyclableDetailFragment extends Fragment {
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			((TextView) rootView.findViewById(R.id.recyclable_detail))
-					.setText(Html.fromHtml(mItem.details));
+					.setText(mItem.details);
 		}
 
 		return rootView;

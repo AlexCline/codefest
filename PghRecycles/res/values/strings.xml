@@ -28,7 +28,7 @@
     <string name="title_recycle_detail">Item Detail</string>
     <string name="recycling_category_name_1">Plastic</string>
     <string name="recycling_category_details_1">Plastic containers labelled as 1, 2, 3, 4, or 5 can be recycled. Rinse containers and discard all lids and caps. </string>
-    <string name="title_recyclable_list">Recyclables</string>
+    <string name="title_recyclable_list">Recycle Anything</string>
     <string name="title_recyclable_detail">Recyclable Detail</string>
     <string name="recycling_category_name_2">Glass</string>
     <string name="recycling_category_details_2">Glass jars and bottles can be recycled curbside. </string>
@@ -53,9 +53,9 @@
         \n\n<u>East End Drop-Off Center - West Homewood/East Liberty - 0.8 Miles</u>        \n<u>Construction Junction - Point Breeze - 1.2 Miles</u></string>
     <string name="recycling_category_name_7">Paper Products</string>
     <string name="recycling_category_details_7"> Magazines, catalogs, paperboard, junk mail, mixed paper, phonebooks, and office paper (all colors) can all be recycled at the curb. Corrugated cardboard must be broken down, flattened and tied. Pizza boxes must be clean and empty (that is, free of food and wax paper).</string>
-    <string name="recycling_category_name_0">general recycling guidelines</string>
+    <string name="recycling_category_name_0">General recycling guidelines</string>
     <string name="recycling_category_details_0"> You do not have to put recyclable items in separate bags. All recyclables can be mixed together in the same blue plastic bag. Also, please discard all caps and lids from bottles and please do not add any other materials to the list above, otherwise they will contaminate the recycling. </string>
-    <string name="recycling_category_name_8">non-recyclables</string>
+    <string name="recycling_category_name_8">Non-recyclables</string>
     <string name="recycling_category_details_8"> In addition to household refuse, crews will accept chairs, small TVs, bikes, small appliances, garden tools, end tables, ironing boards, roasters and grills. Place all refuse at the designated site on collection day in plastic bags or bagged and placed into a container not exceeding 35 gallons in size. Place needles, syringes and lancets in a hard plastic container with a tight-fitting plastic lid, labeled as medical waste. Styrofoam can be disposed of in your regular garbage. 
         \n\n A maximum of two bulk items may be collected per week. Bulk items include sofas, recliner chairs, tables, box springs, mattresses, dressers, large TVs, stoves, washers, dryers, toilets, hot water tanks, windows, and fencing in bundles not exceeding 35 pounds or 5 feet in length.</string>
     <string name="recycle_everything_title">Recycle (almost) Everything!</string>
