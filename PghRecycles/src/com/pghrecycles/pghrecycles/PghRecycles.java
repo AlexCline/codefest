@@ -69,7 +69,8 @@ public class PghRecycles extends Activity {
 		// initialize button listener
 		// TODO move this out of activity creation?
 		final Button button = (Button) findViewById(R.id.buttonDoLookup);
-
+		final PghRecycles pghRecyclesActivity = this;
+		
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// build LocationInfo object
@@ -94,7 +95,7 @@ public class PghRecycles extends Activity {
 				// do lookup for pickup
 				PickupInfo pickupInfo = mPickupDateModel.getPickupInfo(locationInfo, now);
 
-				if (pickupInfo != null) {
+				if (pickupInfo == null) {
 					Toast.makeText(PghRecycles.this, getResources().getString(R.string.address_not_found), Toast.LENGTH_SHORT).show();
 				} else {
 					int pickupDay = pickupInfo.getDay();
@@ -147,6 +148,15 @@ public class PghRecycles extends Activity {
 
 					}, new Random().nextInt(60000) + 30000);
 				}
+				
+				// for testing the recycling panel
+				Intent loadRecyclingIntent = new Intent(pghRecyclesActivity, RecyclingListActivity.class);
+				//detailIntent.putExtra(ItemListActivity.SOME_KEY, someVal);  // in case we want to jump to a particular page?
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e){}
+				startActivity(loadRecyclingIntent);
+				
 			}
 		});
 
