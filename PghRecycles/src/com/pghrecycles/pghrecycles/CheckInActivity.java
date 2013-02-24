@@ -7,6 +7,7 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,6 +24,10 @@ public class CheckInActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_in);
+		
+		this.getActionBar().setHomeButtonEnabled(true);
+		this.getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.getActionBar().setTitle(R.string.title_activity_check_in);
 		
 		mAdapter = NfcAdapter.getDefaultAdapter(this);
 			
@@ -41,7 +46,20 @@ public class CheckInActivity extends Activity {
 		mMap.setMyLocationEnabled(true);
         centerOnMyLocation();
 	}
-
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+        case android.R.id.home:
+//            Intent intent = new Intent(this, PghRecycles.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+        	this.finish();
+            return true;
+		}
+		return true;
+    }
+    
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
