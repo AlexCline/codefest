@@ -1,6 +1,9 @@
 package com.pghrecycles.pghrecycles;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +38,8 @@ public class Dashboard extends Activity {
 		btnCheckIn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
+        
 				Intent i = new Intent(getBaseContext(), CheckInActivity.class);
 				startActivity(i);				
 				//Toast.makeText(getApplicationContext(), "Home Pressed", Toast.LENGTH_LONG).show();
@@ -93,6 +98,8 @@ public class Dashboard extends Activity {
 			@Override
 			public void onClick(View v) {
 				//Toast.makeText(getApplicationContext(), "Your Hood Pressed", Toast.LENGTH_LONG).show();
+				Intent i = new Intent(getBaseContext(), HoodActivity.class);
+				startActivity(i);						
 			}
 		});
 	}

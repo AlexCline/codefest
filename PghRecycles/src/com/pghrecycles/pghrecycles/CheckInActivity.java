@@ -1,6 +1,10 @@
 package com.pghrecycles.pghrecycles;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.nfc.NfcAdapter;
@@ -8,6 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 import android.widget.CheckBox;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -16,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.pghrecycles.pghrecycles.data.providers.GeoLocationProvider;
+import com.pghrecycles.pghrecycles.model.ApplicationState;
 
 public class CheckInActivity extends Activity {
 	private static NfcAdapter mAdapter;
@@ -25,6 +34,7 @@ public class CheckInActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_in);
+		final Context context = this;
 		
 		this.getActionBar().setHomeButtonEnabled(true);
 		this.getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,6 +56,27 @@ public class CheckInActivity extends Activity {
 		mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 		mMap.setMyLocationEnabled(true);
         centerOnMyLocation();
+        
+        Button btnCheckIn = (Button)findViewById(R.id.checkin_button);
+        btnCheckIn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				new AlertDialog.Builder(context)
+			    .setTitle("Check-In Successful!")
+			    .setMessage(R.string.dialog_confirm_checkin)
+			    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			        public void onClick(DialogInterface dialog, int which) {
+			        	ApplicationState mApplicationState = ApplicationState.getInstance();
+			        	mApplicationState.addPoints(100);
+			        	Intent i = new Intent(getBaseContext(), Dashboard.class);
+						startActivity(i);
+			        }
+			     })
+			     .show();
+
+				//Toast.makeText(getApplicationContext(), "Check-In Pressed", Toast.LENGTH_LONG).show();
+			}
+		});
 	}
     
 	@Override
