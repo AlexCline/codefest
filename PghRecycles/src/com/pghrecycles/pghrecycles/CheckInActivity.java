@@ -51,11 +51,12 @@ public class CheckInActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
         case android.R.id.home:
-//            Intent intent = new Intent(this, PghRecycles.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-        	this.finish();
+        	finish();
             return true;
+		case R.id.menu_settings:
+			Intent intent2 = new Intent(this, SetupLocationActivity.class);
+			startActivity(intent2);
+			return true;
 		}
 		return true;
     }

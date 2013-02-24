@@ -130,9 +130,6 @@ public class SetupLocationActivity extends Activity {
 					mApplicationState.setDivisionInfo(divisionInfo);
 					mApplicationState.setHolidayList(holidayList);
 					finish();
-					Intent i = new Intent(getBaseContext(), ScheduleActivity.class);
-					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
-					startActivity(i);
 				}
 			}
 		});
@@ -144,9 +141,7 @@ public class SetupLocationActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
         case android.R.id.home:
-            Intent intent = new Intent(this, PghRecycles.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+        	finish();
             return true;
 		}
 		return true;

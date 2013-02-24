@@ -41,8 +41,8 @@
 	<string name="your_hood">Your Hood</string>
 
     <string name="title_activity_setup_location">"Settings"</string>
-    <string name="title_activity_schedule">"Trash &amp; Recycling Pickup Schedule"</string>
-	<string name="title_activity_check_in">"Green Perks Check In"</string>
+    <string name="title_activity_schedule">"Trash &amp; Recycling Schedule"</string>
+	<string name="title_activity_check_in">"Check In"</string>
 	
 	
 	<string name="schedule_title_pickup">Your Pickup Day Is:</string>
