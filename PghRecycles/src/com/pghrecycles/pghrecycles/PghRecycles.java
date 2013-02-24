@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
+import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.OnNdefPushCompleteCallback;
@@ -173,7 +174,14 @@ public class PghRecycles extends Activity {
         			}
         			
 
-        		}, new Random().nextInt(60000)+30000);      
+        		}, new Random().nextInt(60000)+30000);  
+        		
+        		
+        		// test sharing intent
+        		// TODO move this out of the buttonlistener!!
+        		sampleShareIntent();
+        		
+        		
             }
         });
         
@@ -378,6 +386,27 @@ public class PghRecycles extends Activity {
 		divisionInfoProvider = new DBDivisionInfoProvider(this);
 		holidayListProvider = new DBHolidayListProvider(this);
 	}
+	
+	public void sampleShareIntent() {
+		
+		Intent share = new Intent(Intent.ACTION_SEND);
+//		share.setType("image/jpeg"); // might be text, sound, whatever
+		share.setType("text/plain");
+		
+//		String uriStrImg = "android.resource://com.pghrecycles.pghrecycles/" + R.drawable.breakfast;
+		
+//		share.putExtra(Intent.EXTRA_STREAM, uriStrImg);
+//		share.putExtra(Intent.EXTRA_TEXT, "sample text to be shared");
+		share.putExtra(Intent.EXTRA_SUBJECT, "sample subject");
+		share.putExtra(Intent.EXTRA_TEXT, "http://alexanderconrad.org");
+//		startActivity(Intent.createChooser(share, "share some breakfast"));
+//		startActivity(Intent.createChooser(share, "share some text"));
+		
+		Intent chooser = Intent.createChooser(share, "intent chooser title");
+		startActivity(chooser);
+		
+	}
+	
 //	
 //	public void onResume() {
 //		super.onResume();
