@@ -65,7 +65,7 @@ public class PghRecycles extends Activity {
 					startActivity(i);
 				}
 		});
-		ImageButton btnCheckIn = (ImageButton)findViewById(R.id.checkInButton);
+		ImageButton btnCheckIn = (ImageButton)findViewById(R.id.checkInButtonOld);
 		btnCheckIn.setOnClickListener(new CheckInButtonListener(pointsProvider));
 		
 		//Get the points

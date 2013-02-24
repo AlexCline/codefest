@@ -15,78 +15,86 @@
     <LinearLayout
         android:id="@+id/checkin_criteria"
         android:layout_width="fill_parent"
-        android:padding="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content"        
-        android:orientation="vertical" >
-         <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/checkin_button_container"
+        android:orientation="vertical"
+        android:padding="0dp" >
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="15dp">
-        
-		<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
- 			android:text="What are you doing?"
-            android:textSize="22dp"
-            />
-		    
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:text="Putting out the trash" />
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/checkin_criteria"
-            android:layout_toLeftOf="@+id/checkin_button"
-            android:textSize="22dp"
-            android:text="... and my recycling" />
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:text="Dropping of a bulk item" />
-        
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:text="Upcycling!" />
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:text="Cleaning up the Neighborhood" />
-                </LinearLayout>
-        
+            android:padding="15dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What are you doing?"
+                android:textSize="22dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="Putting out the trash"
+                android:textSize="22dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/checkin_criteria"
+                android:layout_toLeftOf="@+id/checkin_button"
+                
+                android:text="... and my recycling"
+                android:textSize="22dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="Dropping of a bulk item"
+                android:textSize="22dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="Upcycling!"
+                android:textSize="22dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="Cleaning up the Neighborhood"
+                android:textSize="22dp" />
+        </LinearLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/checkin_button_container"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="#ccc"
+        android:layout_alignParentBottom="true"
         android:layout_weight="1"
-        android:layout_alignParentBottom="true" >
+        android:background="#fff"
+        android:padding="25dp" >
+
         <Button
             android:id="@+id/checkin_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-  			android:gravity="center_horizontal"
-	        android:layout_weight="1"
-            android:text="Check in!" />        
-        </LinearLayout>
-
-
-
+            android:layout_weight="1"
+            android:background="@drawable/btn_default_holo_light"
+            android:gravity="center_horizontal"
+            android:text="@string/check_in_button_title"
+            android:textColor="#fff" />
     </LinearLayout>
 
 </RelativeLayout>

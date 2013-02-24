@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/schedule_top_margin"
         android:orientation="vertical" >
 <!--         
 	<string name="schedule_title_pickup">Your Pickup Day Is:</string>
@@ -69,16 +69,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
-        android:background="#ccc"
+        android:background="#fff"
         android:padding="25dp" >
 
         <Button
+            android:background="@drawable/btn_default_holo_light"
+            android:textColor="#fff"            
             android:id="@+id/checkin_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Check in!" />
+            android:text="@string/check_in_button_title" />
     </LinearLayout>
 </RelativeLayout>

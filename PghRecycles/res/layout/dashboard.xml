@@ -1,8 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".Dashboard"
+    android:background="#FFFFFF" >
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/backgroundImg"
+        android:layout_width="match_parent"
+        android:layout_height="843dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/background_label"
+        android:paddingTop="21dip"
+        android:scaleType="fitStart"
+        android:src="@drawable/incline" />
+
+    <ImageView
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="63dp"
+        android:contentDescription="@string/home_button"
+        android:src="@drawable/icon" />
+
+    <ImageView
+        android:id="@+id/checkInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/checkin_button"
+        android:src="@drawable/checkin" />
+
+    <ImageView
+        android:id="@+id/shadow"
+        android:layout_width="802dp"
+        android:layout_height="222dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="115dp"
+        android:contentDescription="@string/shadow"
+        android:src="@drawable/shadow" />
+
+    <ImageView
+        android:id="@+id/earned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/homeButton"
+        android:layout_alignTop="@+id/shadow"
+        android:layout_marginTop="39dp"
+        android:contentDescription="@string/earned"
+        android:src="@drawable/earned" />
+
+    <TextView
+        android:id="@+id/pointsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pointsHolder"
+        android:layout_alignBottom="@+id/pointsHolder"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/pointsHolder"
+        android:contentDescription="@string/points_label"
+        android:text="@string/points_label"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="70sp" />
+
+    <TextView
+        android:id="@+id/pointsHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/earned"
+        android:layout_alignTop="@+id/earned"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/points_holder"
+        android:text="@string/points_holder"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="100sp" />
+
+    <ImageView
+        android:id="@+id/yourActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pickUpScheduleButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="42dp"
+        android:contentDescription="@string/your_activity"
+        android:src="@drawable/your_activity" />
+
+    <ImageView
+        android:id="@+id/pickUpScheduleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/yourActivityButton"
+        android:layout_alignLeft="@+id/pointsHolder"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="22dp"
+        android:contentDescription="@string/pickup_schedule"
+        android:src="@drawable/pickup_sched" />
+
+    <ImageView
+        android:id="@+id/yourHoodButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recycleAnythingButton"
+        android:layout_alignTop="@+id/yourActivityButton"
+        android:contentDescription="@string/your_hood"
+        android:src="@drawable/hood" />
+
+    <TextView
+        android:id="@+id/notifyHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/homeButton"
+        android:layout_marginRight="33dp"
+        android:layout_toLeftOf="@+id/checkInButton"
+        android:background="#66CCFF"
+        android:contentDescription="@string/notifications"
+        android:padding="5sp"
+        android:text="@string/notify_holder"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/recycleAnythingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/checkInButton"
+        android:layout_alignTop="@+id/pickUpScheduleButton"
+        android:layout_marginRight="35dp"
+        android:contentDescription="@string/recycle_anything"
+        android:src="@drawable/recycle_anything" />
+
+</RelativeLayout>
