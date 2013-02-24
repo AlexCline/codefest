@@ -11,11 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.pghrecycles.pghrecycles.data.DivisionInfo;
+import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
 import com.pghrecycles.pghrecycles.data.HolidayList;
 import com.pghrecycles.pghrecycles.data.LocationInfo;
 import com.pghrecycles.pghrecycles.data.PickupDate;
 import com.pghrecycles.pghrecycles.data.PickupInfo;
+import com.pghrecycles.pghrecycles.data.providers.DBDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockPickupInfoProvider;
@@ -25,6 +28,7 @@ import com.pghrecycles.pghrecycles.model.PickupDateModel;
 public class PghRecycles extends Activity {
 
 	PickupInfoProvider pickupInfoProvider;
+	DivisionInfoProvider divisionInfoProvider;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,6 @@ public class PghRecycles extends Activity {
 		final Button button = (Button) findViewById(R.id.buttonDoLookup);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // do lookup
             	// build LocationInfo object
             	int zip = -1;
             	try {
@@ -54,9 +57,19 @@ public class PghRecycles extends Activity {
             	LocationInfo locationInfo = new LocationInfo(address, street, "", zip);
             	Time now = new Time();
             	now.setToNow();
+
+                // do lookup for pickup
             	PickupInfo pickupInfo = pickupInfoProvider.getPickupInfo(locationInfo, now);
             	int pickupDay = pickupInfo.getDay();
             	((EditText)findViewById(R.id.editTextResults)).setText(pickupDay+"");
+            	
+            	// do lookup for division
+            	Division division = pickupInfo.getDivision();
+            	int year = pickupInfo.getYear();
+            	Time time = new Time();
+            	time.set(0, 0, year);  // we only care about the year?
+            	DivisionInfo divisionInfo = divisionInfoProvider.getDivisionInfo(division, time);
+            	
             }
         });
 		
@@ -235,6 +248,7 @@ public class PghRecycles extends Activity {
 		// initialize connection to database
 		// TODO move this out of activity creation?
 		pickupInfoProvider = new DBPickupInfoProvider(this);
+		divisionInfoProvider = new DBDivisionInfoProvider(this);
 		
 	}
 

@@ -28,6 +28,21 @@ public class DivisionInfo {
 	private YardDebrisSchedule yardDebrisSchedule;
 	private RecyclingSchedule recyclingSchedule;
 	
+	public DivisionInfo() {
+		this.division = null;
+		this.name = "";
+		this.yardDebrisSchedule = null;
+		this.recyclingSchedule = null;
+	}
+	
+	public DivisionInfo(Division division, String name,
+			YardDebrisSchedule yardDebrisSchedule,
+			RecyclingSchedule recyclingSchedule) {
+		this.division = division;
+		this.name = name;
+		this.yardDebrisSchedule = yardDebrisSchedule;
+		this.recyclingSchedule = recyclingSchedule;
+	}
 	public String getName() {
 		return name;
 	}
@@ -52,4 +67,12 @@ public class DivisionInfo {
 	public void setDivision(Division division) {
 		this.division = division;
 	}
+
+	@Override
+	public String toString() {
+		return "DivisionInfo [division=" + division + ", name=" + name
+				+ ", yardDebrisSchedule=" + yardDebrisSchedule
+				+ ", recyclingSchedule=" + recyclingSchedule + "]";
+	}
+	
 }
