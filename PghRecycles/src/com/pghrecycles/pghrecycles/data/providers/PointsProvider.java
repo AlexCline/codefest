@@ -1,20 +1,19 @@
 package com.pghrecycles.pghrecycles.data.providers;
 
-import com.pghrecycles.pghrecycles.data.Points;
-
+import com.pghrecycles.pghrecycles.model.ApplicationState;
 
 public class PointsProvider {
-	Points points = new Points();
+	ApplicationState mApplicationState = ApplicationState.getInstance();
 
 	public int getPoints(){
-		return points.getPoints();
+		return mApplicationState.getPoints();
 	}
 	
 	public int addPoints(int pts){
-		return points.addPoints(pts);
+		return mApplicationState.addPoints(pts);
 	}
 	
 	public void setPoints(int pts){
-		points.setPoints(pts);
+		mApplicationState.setPoints(pts);
 	}
 }

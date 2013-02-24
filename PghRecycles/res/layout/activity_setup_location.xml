@@ -37,8 +37,6 @@
             android:inputType="number"
             android:text="925"
             android:textSize="20dp" >
-
-            <!-- <requestFocus /> -->
         </EditText>
 
         <TextView
@@ -78,24 +76,27 @@
             android:textSize="20dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
             <Button
                 android:id="@+id/buttonDoLookup"
-                android:layout_width="wrap_content"
+                android:background="@drawable/btn_default_holo_light"
+                android:textColor="#fff"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="18dp"
                 android:text="Lookup" />
 
             <Button
                 android:id="@+id/getLocationButton"
+                android:background="@drawable/btn_default_holo_light"
+                android:textColor="#fff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@android:drawable/ic_menu_mylocation"
                 android:text="Use GPS Location"
-                android:gravity="left|center_vertical" />
+                 />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

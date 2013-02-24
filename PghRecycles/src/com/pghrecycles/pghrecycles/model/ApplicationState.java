@@ -11,7 +11,7 @@ public class ApplicationState {
 	// private constructor
 	private ApplicationState() {}
 	
-	private int points;
+	private int points = 4900;
 	private PickupInfo pickupInfo;
 	private DivisionInfo divisionInfo;
 	private HolidayList holidayList;
@@ -23,6 +23,11 @@ public class ApplicationState {
 
 	public void setPoints(int points) {
 		this.points = points;
+	}
+	
+	public int addPoints(int points) {
+		this.points += points;
+		return this.points;
 	}
 
 	public PickupInfo getPickupInfo() {
