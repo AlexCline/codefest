@@ -4,26 +4,39 @@
     <string name="app_name">PghRecycles</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="address_num">addressNum</string>
-    <string name="street">street</string>
-    <string name="zip">zip</string>
+    <string name="address_num">House #</string>
+    <string name="street">Street Name</string>
+    <string name="zip">ZIP Code</string>
     <string name="results">results</string>
-    <string name="lookup">lookup</string>
+    <string name="lookup">Search</string>
+    <string name="enter_street_address">Enter Your Street Address:</string>
+    
+    
     <string name="day_int_result">dayID</string>
     <string name="notification_garbage_ticker">"GreenPerks: Time to Redd Up!"</string>
     <string name="notification_garbage_title">"Garbage day is coming up!"</string>
     <string name="notification_garbage_content">"Garbage day is %1$s!"</string>
     <string name="notification_recycle_ticker">"GreenPerks: Time to Redd Up!"</string>
     <string name="notification_recycle_title">"It's Recycling week!"</string>
-    <string name="notification_recycle_content">"Garbage/Recycling day is %1$s!"</string>
+    <string name="notification_recycle_content">"Garbage &amp; Recycling day is %1$s!"</string>
     <string name="notification_debris_ticker">"GreenPerks: Time to Redd Up!"</string>
     <string name="notification_debris_title">"Yard Debris day is almost here!"</string>
     <string name="notification_debris_content">"Yard Debris day is %1$s!"</string>
-    <string name="title_activity_check_in">CheckInActivity</string>
+    
     <string name="get_location">Get My Location</string>
     <string name="get_location_button">Get My Location Button</string>
-	<string name="address_not_found">This address may not be a residential address, please try another!</string>
-	<string name="points_holder">####</string>
-	<string name="points_label">POINTS</string>
+    <string name="address_not_found">This address may not be a residential address, please try another!</string>
+    <string name="points_holder">####</string>
+    <string name="points_label">POINTS</string>
 
+    <string name="title_activity_setup_location">"Settings"</string>
+    <string name="title_activity_schedule">"Trash &amp; Recycling Pickup Schedule"</string>
+	<string name="title_activity_check_in">"Green Perks - Check In"</string>
+	
+	
+	<string name="schedule_title_pickup">Your Pickup Day Is:</string>
+	<string name="schedule_title_next_pickup">Your Next Trash Pickup Is:</string>
+	<string name="schedule_title_next_recycling">Your Next Recycling Pickup Is:</string>
+	<string name="schedule_title_next_debris">Your Next Yard Debris Pickup Is:</string>
+			
 </resources>
