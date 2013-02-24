@@ -27,12 +27,17 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 import com.pghrecycles.pghrecycles.data.DivisionInfo;
+import com.pghrecycles.pghrecycles.data.DivisionInfo.Division;
 import com.pghrecycles.pghrecycles.data.HolidayList;
 import com.pghrecycles.pghrecycles.data.LocationInfo;
 import com.pghrecycles.pghrecycles.data.PickupDate;
 import com.pghrecycles.pghrecycles.data.PickupInfo;
+import com.pghrecycles.pghrecycles.data.providers.DBDivisionInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.DBHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.GeoLocationProvider;
+import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.MockPickupInfoProvider;
@@ -43,6 +48,9 @@ import com.pghrecycles.pghrecycles.notification.Notifier;
 public class PghRecycles extends Activity {
 
 	PickupInfoProvider pickupInfoProvider;
+	DivisionInfoProvider divisionInfoProvider;
+	HolidayListProvider holidayListProvider;
+	
 	PickupDateModel mPickupDateModel;
 	PendingIntent pendingIntent;
 //	private static NfcAdapter mAdapter;
@@ -81,7 +89,6 @@ public class PghRecycles extends Activity {
 		final Button button = (Button) findViewById(R.id.buttonDoLookup);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // do lookup
             	// build LocationInfo object
             	int zip = -1;
             	try {
@@ -99,14 +106,26 @@ public class PghRecycles extends Activity {
             	LocationInfo locationInfo = new LocationInfo(address, street, "", zip);
             	Time now = new Time();
             	now.setToNow();
+
+                // do lookup for pickup
             	PickupInfo pickupInfo = pickupInfoProvider.getPickupInfo(locationInfo, now);
             	int pickupDay = pickupInfo.getDay();
             	((EditText)findViewById(R.id.editTextResults)).setText(pickupDay+"");
             	
+            	// do lookup for division
+            	Division division = pickupInfo.getDivision();
+            	int year = pickupInfo.getYear();
+            	Time time = new Time();
+//            	time.set(0, 0, year);  // we only care about the year?
+            	time.setToNow();
+            	
+            	
             	Log.e("PghRecycles", "pickup info day: " + pickupDay + " division: " + pickupInfo.getDivision());
 
-            	HolidayList holidayList = mPickupDateModel.getHolidayList(now);
-        		DivisionInfo divisionInfo = mPickupDateModel.getDisivionInfo(pickupInfo.getDivision(), now);
+//            	HolidayList holidayList = mPickupDateModel.getHolidayList(now);
+            	HolidayList holidayList = holidayListProvider.getHolidayList(now);
+//        		DivisionInfo divisionInfo = mPickupDateModel.getDisivionInfo(pickupInfo.getDivision(), now);
+            	DivisionInfo divisionInfo = divisionInfoProvider.getDivisionInfo(division, now);
             	
             	TextView nextPickupDateView = (TextView)findViewById(R.id.next_pickup_date);
             	final Time nextRefusePickupDate = mPickupDateModel.getNextRefusePickupDate(pickupInfo, holidayList, now).getDate(); 
@@ -153,11 +172,9 @@ public class PghRecycles extends Activity {
         						String.format(getResources().getString(R.string.notification_debris_content), nextYardDebrisPickupDate.format("%B%e")));
         			}
         			
-        		}, new Random().nextInt(60000)+30000);
-        		
-        	}
 
-
+        		}, new Random().nextInt(60000)+30000);      
+            }
         });
         
 
@@ -184,25 +201,7 @@ public class PghRecycles extends Activity {
 
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_pgh_recycles, menu);
-		return true;
-	}
-	
-	@Override
-	public void onStart() {
-		super.onStart();
-		
-		// initialize connection to database
-		// TODO move this out of activity creation?
-		pickupInfoProvider = new DBPickupInfoProvider(this);
-		
-    }	
-	
 	Handler mHandler = new Handler();
-
 
 	private void test() {
 		
@@ -358,8 +357,26 @@ public class PghRecycles extends Activity {
 		nextRecycleDate = mPickupDateModel.getNextRecyclingPickupDate(pickupInfo, holidayList, divisionInfo, currentDate);
 		nextRefuseDate = mPickupDateModel.getNextRefusePickupDate(pickupInfo, holidayList, currentDate);
 		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next pickup date: " + nextRefuseDate.getDate().format3339(true));
-		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next recyle date: " + nextRecycleDate.getDate().format3339(true));	
+		Log.e("PghRecycles", " current date: " + currentDate.format3339(true) + " next recyle date: " + nextRecycleDate.getDate().format3339(true));
+		
+	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_pgh_recycles, menu);
+		return true;
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		
+		// initialize connection to database
+		// TODO move this out of activity creation?
+		pickupInfoProvider = new DBPickupInfoProvider(this);
+		divisionInfoProvider = new DBDivisionInfoProvider(this);
+		holidayListProvider = new DBHolidayListProvider(this);
 	}
 //	
 //	public void onResume() {

@@ -9,7 +9,7 @@ public class RecyclingSchedule {
 	public int getStartWeek() {
 		return startWeek;
 	}
-
+	
 	public void setStartWeek(int startWeek) {
 		this.startWeek = startWeek;
 	}
@@ -24,4 +24,10 @@ public class RecyclingSchedule {
 		Log.e("PghRecycles", "weeknumber: " + weekNumber + " startWeek: " + startWeek);
 		return (weekNumber % 2) == (startWeek % 2);
 	}
+
+	@Override
+	public String toString() {
+		return "RecyclingSchedule [startWeek=" + startWeek + "]";
+	}
+	
 }
