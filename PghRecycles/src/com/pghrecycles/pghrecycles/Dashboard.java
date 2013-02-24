@@ -1,9 +1,6 @@
 package com.pghrecycles.pghrecycles;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,7 +50,6 @@ public class Dashboard extends Activity {
 		btnHome.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(getApplicationContext(), "Home Pressed", Toast.LENGTH_LONG).show();
 			}
 		});
 		
@@ -61,7 +57,6 @@ public class Dashboard extends Activity {
 		btnNotifyHolder.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(getApplicationContext(), "Notify Pressed", Toast.LENGTH_LONG).show();
 			}
 		});
 		
@@ -69,7 +64,6 @@ public class Dashboard extends Activity {
 		btnPickUpSched.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(getApplicationContext(), "Pick-up Schedule Pressed", Toast.LENGTH_LONG).show();
 				Intent i = new Intent(getBaseContext(), ScheduleActivity.class);
 				startActivity(i);				
 			}
@@ -89,7 +83,8 @@ public class Dashboard extends Activity {
 		btnYourActivity.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(getApplicationContext(), "Your Activity Pressed", Toast.LENGTH_LONG).show();
+//				Intent i = new Intent(getBaseContext(), PerksActivity.class);
+//				startActivity(i);										
 			}
 		});
 		
@@ -97,7 +92,6 @@ public class Dashboard extends Activity {
 		btnYourHood.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				//Toast.makeText(getApplicationContext(), "Your Hood Pressed", Toast.LENGTH_LONG).show();
 				Intent i = new Intent(getBaseContext(), HoodActivity.class);
 				startActivity(i);						
 			}

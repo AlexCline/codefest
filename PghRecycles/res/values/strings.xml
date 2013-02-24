@@ -61,7 +61,7 @@
     <string name="recycle_everything_title">Recycle (almost) Everything!</string>
     <string name="address_not_found">This address may not be a residential address, please try another!</string>
     <string name="points_holder">####</string>
-    <string name="points_label">points</string>
+    <string name="points_label">points!</string>
     <string name="background_label">Incline Background</string>
     <string name="home_button">Home Button</string>
     <string name="checkin_button">Checkin Button</string>
@@ -77,7 +77,7 @@
     <string name="title_activity_schedule">"Trash &amp; Recycling Schedule"</string>
 
 
-    <string name="title_activity_perks">PerksActivity</string>
+    <string name="title_activity_perks">Your Activity</string>
 
 	<string name="title_activity_check_in">"Check In"</string>
 	
