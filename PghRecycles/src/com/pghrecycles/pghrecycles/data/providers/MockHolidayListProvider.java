@@ -2,6 +2,7 @@ package com.pghrecycles.pghrecycles.data.providers;
 
 import android.text.format.Time;
 
+import com.pghrecycles.pghrecycles.data.DateTimeUtil;
 import com.pghrecycles.pghrecycles.data.Holiday;
 import com.pghrecycles.pghrecycles.data.HolidayList;
 
@@ -16,30 +17,38 @@ public class MockHolidayListProvider implements HolidayListProvider {
 //		case 2013:
 			tempDateTime = new Time();
 			tempDateTime.set(1, 1-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
 			holidayList.add(new Holiday("New Year's Day", tempDateTime));
 
 			tempDateTime = new Time();
 			tempDateTime.set(21, 1-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
 			holidayList.add(new Holiday("Rev. Dr. Martin Luther King, Jr. Day", tempDateTime));
 
 			tempDateTime = new Time();
 			tempDateTime.set(27, 5-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
+
 			holidayList.add(new Holiday("Memorial Day", tempDateTime));
 			
 			tempDateTime = new Time();
 			tempDateTime.set(4, 7-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
 			holidayList.add(new Holiday("Independence Day", tempDateTime));
 
 			tempDateTime = new Time();
 			tempDateTime.set(2, 9-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
 			holidayList.add(new Holiday("Labor Day", tempDateTime));
 			
 			tempDateTime = new Time();
 			tempDateTime.set(28, 11-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
 			holidayList.add(new Holiday("Thanksgiving", tempDateTime));
 			
 			tempDateTime = new Time();
 			tempDateTime.set(25, 12-1, 2013);
+			DateTimeUtil.setToMidnight(tempDateTime);
 			holidayList.add(new Holiday("Christmas", tempDateTime));
 
 			//break;
