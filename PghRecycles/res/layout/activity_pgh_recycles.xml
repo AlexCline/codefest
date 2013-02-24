@@ -119,6 +119,13 @@
         android:layout_marginRight="18dp"
         android:text="Lookup" />
 
+    <Button
+        android:id="@+id/buttonCheckout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:text="Checkout" />
+
     <ImageButton
         android:id="@+id/getLocationButton"
         android:layout_width="wrap_content"

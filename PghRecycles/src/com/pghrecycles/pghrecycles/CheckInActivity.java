@@ -1,15 +1,23 @@
 package com.pghrecycles.pghrecycles;
 
-import android.nfc.NfcAdapter;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
+import android.nfc.NfcAdapter;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.pghrecycles.pghrecycles.data.providers.GeoLocationProvider;
+
 public class CheckInActivity extends Activity {
 	private static NfcAdapter mAdapter;
-	
+	private GoogleMap mMap = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +25,21 @@ public class CheckInActivity extends Activity {
 		setContentView(R.layout.activity_check_in);
 		
 		mAdapter = NfcAdapter.getDefaultAdapter(this);
+			
+		MapFragment mapFrag = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+		mMap = mapFrag.getMap();
+
+		if (savedInstanceState == null) {
+//			//CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(40.76793169992044, -73.98180484771729));
+//			CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(40.4660, -79.9650));
+//			CameraUpdate zoom = CameraUpdateFactory.zoomTo(12);
+//
+//			mMap.moveCamera(center);
+//			mMap.animateCamera(zoom);
+		}
+		mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+		mMap.setMyLocationEnabled(true);
+        centerOnMyLocation();
 	}
 
 	@Override
@@ -34,10 +57,27 @@ public class CheckInActivity extends Activity {
 			mAdapter.disableForegroundDispatch(this);
 		}
 	}
+	
+	private void centerOnMyLocation() {		
+		GeoLocationProvider glp = new GeoLocationProvider(this);
+		
+		Location myLocation = glp.getLocation();
+		if (myLocation != null) {
+			CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()));
+			CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
+	
+			mMap.moveCamera(center);
+			mMap.animateCamera(zoom);
+		} else {
+			Log.e("CheckinActivity", "location is null");
+		}
+	}
 
     @Override
     public void onResume() {
         super.onResume();
+        centerOnMyLocation();
+
         // Check to see that the Activity started due to an Android Beam
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             processIntent(getIntent());

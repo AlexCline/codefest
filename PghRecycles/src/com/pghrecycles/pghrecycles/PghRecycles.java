@@ -3,18 +3,7 @@ package com.pghrecycles.pghrecycles;
 import java.util.Random;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.IntentFilter.MalformedMimeTypeException;
-import android.net.Uri;
-import android.nfc.NdefMessage;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcAdapter.OnNdefPushCompleteCallback;
-import android.nfc.NfcEvent;
-import android.nfc.tech.TagTechnology;
-import java.util.ArrayList;
-import java.util.Random;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Time;
@@ -37,7 +26,6 @@ import com.pghrecycles.pghrecycles.data.providers.DBDivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBHolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
-import com.pghrecycles.pghrecycles.data.providers.GeoLocationProvider;
 import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
 import com.pghrecycles.pghrecycles.model.PickupDateModel;
@@ -59,6 +47,15 @@ public class PghRecycles extends Activity {
 		
 		ImageButton btnGetLocation = (ImageButton)findViewById(R.id.getLocationButton);
 		btnGetLocation.setOnClickListener(new GetLocationButtonListener(this));
+		
+		Button checkoutButton = (Button)findViewById(R.id.buttonCheckout);
+		checkoutButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent i = new Intent(getBaseContext(), CheckInActivity.class);
+					startActivity(i);
+				}
+		});
 		
 		pickupInfoProvider = new DBPickupInfoProvider(this);
 		divisionInfoProvider = new DBDivisionInfoProvider(this);
@@ -94,7 +91,7 @@ public class PghRecycles extends Activity {
 				// do lookup for pickup
 				PickupInfo pickupInfo = mPickupDateModel.getPickupInfo(locationInfo, now);
 
-				if (pickupInfo != null) {
+				if (pickupInfo == null) {
 					Toast.makeText(PghRecycles.this, getResources().getString(R.string.address_not_found), Toast.LENGTH_SHORT).show();
 				} else {
 					int pickupDay = pickupInfo.getDay();
