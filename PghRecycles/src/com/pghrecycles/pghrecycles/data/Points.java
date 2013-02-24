@@ -1,17 +1,17 @@
 package com.pghrecycles.pghrecycles.data;
 
 public class Points {
-	private long points;
+	private int points = 4900;
 	
-	public long getPoints(){
+	public int getPoints(){
 		return this.points;
 	}
 	
-	public void setPoints(long points){
+	public void setPoints(int points){
 		this.points = points;
 	}
 	
-	public long addPoints(long points){
+	public int addPoints(int points){
 		this.points += points;
 		return this.points;
 	}

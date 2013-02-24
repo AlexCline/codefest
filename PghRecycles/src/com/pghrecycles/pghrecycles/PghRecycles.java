@@ -28,8 +28,10 @@ import com.pghrecycles.pghrecycles.data.providers.DBPickupInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.DivisionInfoProvider;
 import com.pghrecycles.pghrecycles.data.providers.HolidayListProvider;
 import com.pghrecycles.pghrecycles.data.providers.PickupInfoProvider;
+import com.pghrecycles.pghrecycles.data.providers.PointsProvider;
 import com.pghrecycles.pghrecycles.model.PickupDateModel;
 import com.pghrecycles.pghrecycles.notification.Notifier;
+import com.pghrecycles.pghrecyles.listeners.CheckInButtonListener;
 import com.pghrecycles.pghrecyles.listeners.GetLocationButtonListener;
 
 public class PghRecycles extends Activity {
@@ -39,6 +41,8 @@ public class PghRecycles extends Activity {
 	HolidayListProvider holidayListProvider;
 
 	PickupDateModel mPickupDateModel;
+	
+	PointsProvider pointsProvider = new PointsProvider();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,12 @@ public class PghRecycles extends Activity {
 					startActivity(i);
 				}
 		});
+		ImageButton btnCheckIn = (ImageButton)findViewById(R.id.checkInButton);
+		btnCheckIn.setOnClickListener(new CheckInButtonListener(pointsProvider));
+		
+		//Get the points
+		
+		((TextView) findViewById(R.id.pointsHolder)).setText(Integer.toString(pointsProvider.getPoints()));
 		
 		pickupInfoProvider = new DBPickupInfoProvider(this);
 		divisionInfoProvider = new DBDivisionInfoProvider(this);
@@ -68,6 +78,7 @@ public class PghRecycles extends Activity {
 		final Button button = (Button) findViewById(R.id.buttonDoLookup);
 
 		button.setOnClickListener(new View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				// build LocationInfo object
 				int zip = -1;

@@ -23,5 +23,7 @@
     <string name="get_location">Get My Location</string>
     <string name="get_location_button">Get My Location Button</string>
 	<string name="address_not_found">This address may not be a residential address, please try another!</string>
+	<string name="points_holder">####</string>
+	<string name="points_label">POINTS</string>
 
 </resources>
